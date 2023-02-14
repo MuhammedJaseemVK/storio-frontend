@@ -14,7 +14,7 @@ export default function detailEntry() {
         <Input placeholder="test" type="text" required={true} />
         <Input placeholder="test" type="text" required={true} />
         <Input placeholder="test" type="text" required={true} />
-        <Button />
+        <Button text='Continue'/>
       </form>
     </div>
   )
