@@ -27,7 +27,8 @@ export default function detailEntry() {
 
   return (
     <div className='bg-black h-screen flex flex-col gap-5 p-5'>
-      <MdArrowBack className='text-white text-3xl' />
+      <Link href="/signup"><MdArrowBack className='text-white text-3xl' /></Link>
+      
       <div className='text-white text-3xl font-semibold px-2 '>Tell us more about <span className='text-[#ff9900]'>Yourself</span></div>
       <form onSubmit={submitHandler} className='flex flex-col gap-3 w-full items-center px-3'>
         <Input placeholder="Name" type="text" required={true} value={name} onChange={e=>setName(e.target.value)} />
