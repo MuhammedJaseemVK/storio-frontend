@@ -9,6 +9,8 @@ export default function Document() {
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script noModule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.3/dist/iconify-icon.min.js"></script>
+        {/* <script src="https://code.iconify.design/iconify-icon/1.0.3/iconify-icon.min.js"></script> */}
       </Head>
       <body>
         <Main />
