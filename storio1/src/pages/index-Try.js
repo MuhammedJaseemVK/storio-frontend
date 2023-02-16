@@ -6,9 +6,9 @@ import Subtext from '@/components/inputs/Subtext';
 
 export default function index1() {
   return (
-    <div className='h-screen bg-black p-5'>
+    <div className='h-screen flex flex-col justify-between bg-black p-5'>
         <MdArrowBack className='text-white text-3xl'/>
-          <div className='flex flex-col gap-3 pt-32'>
+          <div className='flex flex-col gap-3 pb-20'>
               <Heading text1="Let's get" text2='Started' />
               <Subtext text='Create an account or login to begin adventure'></Subtext>
               <div className='flex flex-col items-center justify-center text-black text-base'>
