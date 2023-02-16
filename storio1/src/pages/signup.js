@@ -28,14 +28,14 @@ export default function signup() {
   return (
     <div className='bg-black h-screen p-5'>
       <Link href="/" ><MdArrowBack className='text-white text-3xl' /></Link>
-        <div className="flex flex-col gap-3">
-        <div className='text-white text-3xl'>Sign <span className='text-[#ff9900]'>Up</span></div>
-        <form onSubmit={submitHandler} className='flex flex-col gap-3 w-full items-center px-3'>
+        <div className="flex flex-col gap-3 mt-4">
+        <div className='text-white text-3xl px-3 font-semibold'>Sign <span className='text-[#ff9900]'>Up</span></div>
+        <form onSubmit={submitHandler} className='flex flex-col gap-3 w-full items-center px-3 mt-6'>
           <Input placeholder='Username' type='text' required={true} value={name} onChange={e => setname(e.target.value)} />
           <Input placeholder='Email' type='text' required={true} value={email} onChange={e => setemail(e.target.value)} />
           <Input placeholder='Password' type='text' required={true} value={password1} onChange={e => setpassword1(e.target.value)} />
           <Input placeholder='Confirm Password' required={true} type='text' value={password2} onChange={e => setpassword2(e.target.value)} />
-          <Link href="/" ><p className='text-white text-sm text-right w-full'>Already have an account?</p></Link>
+          <Link href="/loginnew" ><p className='text-white text-sm justify-end w-full'>Already have an account?</p></Link>
           <Button text="Continue" />        
         </form>
         
