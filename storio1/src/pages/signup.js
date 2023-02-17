@@ -82,7 +82,7 @@ export default function signup() {
           <Input placeholder='Password' type='text' required={true} value={password1} onChange={e => setpassword1(e.target.value)} />
           <Input placeholder='Confirm Password' required={true} type='text' value={password2} onChange={e => setpassword2(e.target.value)} />
           <Link href="/loginnew" ><p className='text-white text-sm text-right w-full'>Already have an account?</p></Link>
-          <Button text="Continue" />        
+          <Button text="Continue" id="signupButton" />        
         </form>
 
       </div>
