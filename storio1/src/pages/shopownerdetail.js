@@ -10,6 +10,7 @@ import Link from 'next/link'
 export default function shopownerdetail() {
   const router = useRouter();
   const [name, setName] = useState("")
+  const [ownername, setOwnerName] = useState("")
   const [address, setAddress] = useState("")
   const [city, setCity] = useState("")
   const [pin, setPin] = useState("")
@@ -32,7 +33,8 @@ export default function shopownerdetail() {
       
       <div className='text-white text-4xl font-semibold px-8 '>Tell us more about <span className='text-[#ff9900]'>Your Store</span></div>
       <form onSubmit={submitHandler} className='flex flex-col gap-3 w-full items-center px-3'>
-        <Input placeholder="Name" type="text" required={true} value={name} onChange={e=>setName(e.target.value)} />
+        <Input placeholder="Shop name" type="text" required={true} value={name} onChange={e=>setName(e.target.value)} />
+        <Input placeholder="Owner name" type="text" required={true} value={ownername} onChange={e=>setOwnerName(e.target.value)} />
         <Input placeholder="Address" type="text" required={true} value={address} onChange={e=>setAddress(e.target.value)} />
         <Input placeholder="City" type="text" required={true} value={city} onChange={e=>setCity(e.target.value)}/>
         <Input placeholder="PIN/ZIP" type="number" required={true} value={pin} onChange={e=>setPin(e.target.value)}/>
