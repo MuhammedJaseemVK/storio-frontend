@@ -21,7 +21,7 @@ export default function verification() {
       }
     return (
       <div className='bg-black h-screen p-5'>
-          <MdArrowBack className='text-white text-3xl'/>
+          <Link href="/signup"><MdArrowBack className='text-white text-3xl'/></Link>
           <div className='text-white text-3xl mt-4 px-3'>Enter your <span className='text-[#ff9900]'>Phone</span></div>
           <p className='text-white text-sm text-left mt-7 px-3'>You will receive 4 digit code for phone number verification.</p>
           <form onSubmit={submitHandler} className='flex flex-col gap-3 px-3 py-7' >
