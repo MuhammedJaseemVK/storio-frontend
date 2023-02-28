@@ -43,12 +43,30 @@ export default function verification() {
       });
 
   };
+  const confirmOtp = (otp) => {
+    window.confirmationResult.confirm(otp).then((result) => {
+      // User signed in successfully.
+      const user = result.user;
+      console.log(user);
+      alert("Signup complete")
+      // ...
+    }).catch((error) => {
+      // User couldn't sign in (bad verification code?)
+      // ...
+      alert("Bad verification code!!")
+    });
+  }
 
   function submitHandler(e) {
+    console.log("test")
     e.preventDefault();
     if (phone.length != 10) {
       alert("Phone number is is incorrect")
     } else {
+      if (showotp) {
+        confirmOtp(otp)
+        return;
+      }
       signUpWithPhone({ phone: `+91${phone}` })
     }
   }
@@ -83,9 +101,11 @@ export default function verification() {
           <Input placeholder="OTP" type="number" required={true} value={otp} onChange={e => setotp(e.target.value)} />
         }
 
-
-
-        <Button text='Continue' id="signupButton" />
+        {
+          showotp ?
+          <Button onClick={()=>confirmOtp(otp)} text='Continue'  />:
+          <Button text='Send OTP' id="signupButton" />
+        }
       </form>
 
     </div>
