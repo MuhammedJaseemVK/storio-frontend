@@ -24,7 +24,7 @@ export default function detailEntry() {
     if(pin.length!=6){
       alert("Pin value is incorrect")
     }else{
-      router.push('/')
+      router.push('/customerhome')
     }
   }
 
