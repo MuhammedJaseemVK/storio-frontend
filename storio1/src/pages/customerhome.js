@@ -14,14 +14,14 @@ export default function
 () {
   return (
     <div className='bg-yellow-600 font-[Poppins]'>
-      <span className='absolute text-gray-600 text-4xl top-5 left-4 cursor-pointer ' onclick="Open()">
+      <span className='absolute text-gray-600 text-4xl top-5 left-4 cursor-pointer' onclick="Open()">
         <i className='bi bi-filter-left px-2 bg-gray-900  '></i>
       </span>
-      <div className='sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-gray-700'>
-           <div className='text-white-100 text-xl'>
+      <div className='sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-black'>
+          <div className='text-white-100 text-xl'>
             <div className='p-2.5 mt-1 flex items-center'>
               <RxHamburgerMenu className='text-white bi bi-app-indicator ' />
-              <h1 className='font-bold text-white text-[15px] ml-3 px-5'>STORIO</h1>
+              <h1 className='font-bold text-[#FF9900] text-[25px] ml-3 px-5'>STORIO</h1>
               <BsXLg className='size-1 text-white bi bi-x px-25 ml-20 cursor-pointer ' />
               
             </div>
@@ -61,9 +61,8 @@ export default function
            <div className='p-2.5 mt-5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-gray-300 bg-white'>
             <IoLogOut className='text-gray-600 bi bi-search '/>
             <span className='px-4 text-[15px] text-gray-600'>Log out </span>
-           </div>
-
-
+          
+          </div>
            
       </div>
 
