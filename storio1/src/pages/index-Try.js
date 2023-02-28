@@ -1,28 +1,36 @@
 import React from 'react'
-import { MdArrowBack } from "react-icons/md";
-import Input from '@/components/inputs/Input';
+import { MdArrowBack } from "react-icons/md";;
 import Heading from '@/components/inputs/Heading';
 import Subtext from '@/components/inputs/Subtext';
+import Button from '@/components/inputs/Button';
+import { MdOutlineArrowForward } from "react-icons/md";
+import { useRouter } from 'next/router';
+import Link from 'next/link'
+
+
 
 export default function index1() {
+
+  
+
   return (
-    <div className='h-screen bg-black p-5'>
-        <MdArrowBack className='text-white text-3xl'/>
-          <div className='flex flex-col gap-3 pt-32'>
+    <div className='h-screen flex flex-col justify-between bg-black p-5'>
+        <MdArrowBack className='text-black text-3xl'/>
+          <div className='flex flex-col gap-5 pb-20'>
               <Heading text1="Let's get" text2='Started' />
               <Subtext text='Create an account or login to begin adventure'></Subtext>
               <div className='flex flex-col items-center justify-center text-black text-base'>
-                  <button className='bg-white w-full  px-3 py-2 mt-4 rounded-lg'>
-                      Signup as customer
+                  <Link href='\signup' className='w-full'>
+                    
+                  <button  className='bg-white flex justify-center w-full items-center text-black text-base rounded-lg px-3 py-2 mt-4'>
+                      Signup as customer<MdOutlineArrowForward />
                   </button>
-                  <button className='bg-[#ff9900] w-full px-3 py-2 mt-4 rounded-lg'>
-                      Signup as shopowner
-                  </button>
-                  <button className='bg-[#ff9900] w-full px-3 py-2 mt-4 rounded-lg'>
-                      Signup as supplier
-                  </button>
+                  </Link>
+                  
+                    <Button text="Signup as shopowner"/>
+                    <Button text="Signup as supplier" />
               </div>
-              <p className='text-sm text-white text-center'>Already have an account?</p>
+              <Link href="/loginnew"><p className='text-sm text-white text-center'>Already have an account?</p></Link>
         </div>
                
     </div>
