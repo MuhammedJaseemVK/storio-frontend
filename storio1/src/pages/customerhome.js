@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { RxHamburgerMenu } from "react-icons/rx";
 import { BsXLg ,BsCartCheckFill} from "react-icons/bs";
 import { AiFillHome ,AiOutlineUnorderedList} from "react-icons/ai";
@@ -7,21 +7,28 @@ import { IoSettingsSharp ,IoLogOut} from "react-icons/io5";
 
 
 
+ 
 import Input from '@/components/inputs/Input';
 
 import { BsSearch } from "react-icons/bs";
+
 export default function 
 () {
+  const [showSidebar, setshowSidebar] = useState(false)
+
   return (
     <div className='bg-yellow-600 font-[Poppins]'>
-      <span className='absolute text-gray-600 text-4xl top-5 left-4 cursor-pointer ' onclick="Open()">
-        <i className='bi bi-filter-left px-2 bg-gray-900  '></i>
-      </span>
-      <div className='sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-gray-700'>
-           <div className='text-white-100 text-xl'>
+      <button className='absolute text-gray-600 text-4xl top-5 left-4 cursor-pointer ' onClick={()=>setshowSidebar(true)}>
+       <RxHamburgerMenu className='text-[#FF9900] bi bi-app-indicator ' />
+      </button>
+      
+      <div className={`${showSidebar?'':'hidden'} sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-black`}>
+           <div className='text-[#FF9900]-100 text-xl'>
             <div className='p-2.5 mt-1 flex items-center'>
-              <RxHamburgerMenu className='text-white bi bi-app-indicator ' />
-              <h1 className='font-bold text-white text-[15px] ml-3 px-5'>STORIO</h1>
+              <button  onClick={()=>setshowSidebar(false)} id="sidebar-toggle">
+                <RxHamburgerMenu className='text-[#FF9900] bi bi-app-indicator ' />
+                </button>
+              <h1 className='font-bold text-[#FF9900] text-[25px] ml-3 px-5'>STORIO</h1>
               <BsXLg className='size-1 text-white bi bi-x px-25 ml-20 cursor-pointer ' />
               
             </div>
