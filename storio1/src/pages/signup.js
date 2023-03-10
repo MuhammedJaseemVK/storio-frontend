@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { MdOutlineArrowForward } from "react-icons/md";
-import { MdArrowBack } from "react-icons/md";
+import React from 'react'
+import {MdOutlineArrowForward}  from "react-icons/md";
+import {MdArrowBack}  from "react-icons/md";
 import Button from '@/components/inputs/Button';
 import Input from '@/components/inputs/Input';
 import { useRouter } from 'next/router';

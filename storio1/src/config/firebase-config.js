@@ -8,7 +8,7 @@
 
 import { initializeApp, getApps } from "firebase/app"
 import { getFirestore } from "firebase/firestore"
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
+import { getAuth, createUserWithEmailAndPassword, RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth"
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBFmKp3aYYXE4kfwjo0zOqvMQvxh39lsdo",
@@ -34,6 +34,8 @@ const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
 const auth = getAuth(app)
 
-export { db, auth, createUserWithEmailAndPassword }
+
+
+export { db, auth, createUserWithEmailAndPassword, signInWithPhoneNumber, RecaptchaVerifier, getAuth }
 // export { auth, db, now, storage };
 console.log(app.name ? 'Firebase Mode Activated!' : 'Firebase not working :(');
