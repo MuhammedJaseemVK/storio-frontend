@@ -27,11 +27,11 @@ export default function detailEntry() {
     <div className='bg-black h-screen flex flex-col gap-5 p-5'>
      <Link href="/index-Try"> <MdArrowBack className='text-white text-3xl' /></Link>
       <div className='text-white text-3xl font-semibold px-3 mt-4'>Welcome <span className='text-[#ff9900]'>    Back</span></div>
-      <p className='text-white text-sm text-left px-3 mt-5'>You have been missed</p>
-      <form onSubmit={submitHandler} className='flex flex-col gap-3 w-72 items-center px-3 '>
+      <p className='text-white text-sm text-left px-3 mt-3'>You have been missed</p>
+      <form onSubmit={submitHandler} className='flex flex-col gap-3 w-full items-center px-3 mt-0.001'>
         <Input placeholder="Email" type="text" required={true} value={email} onChange={e=>setEmail(e.target.value)} />
         <Input placeholder="Password" type={showpassword?"text":"password" } required={true} value={password} onChange={e=>setPassword(e.target.value)} />
-        <div className='flex items-center justify-end w-full'>
+        <div className='flex items-center justify-end w-72'>
         <input type="checkbox" name="show" value={showpassword} onChange={()=>setshowpassword(!showpassword)} />
             <label className='text-white text-sm  px-3 ' >Show password</label>
            
