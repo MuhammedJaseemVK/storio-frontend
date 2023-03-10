@@ -35,7 +35,7 @@ export default function detailEntry() {
       <div className='text-white text-3xl font-semibold px-3 '>Tell us more about <span className='text-[#ff9900]'>Yourself</span></div>
       <form onSubmit={submitHandler} className='flex flex-col gap-3 w-full items-center px-3'>
         <Input placeholder="Name" type="text" required={true} value={name} onChange={e=>setName(e.target.value)} />
-        <Date  className='rounded-lg px-3 py-2 bg-gray-100   px-3' placeholder="Date of Birth"
+        <Date  className='rounded-lg px-3 py-2 bg-gray-100' placeholder="Date of Birth"
         id="date"required={true} value={dob} onChange={e=>setdob(e.target.value)} />
         
         <select className='rounded-lg px-3 py-2 w-72 text-gray-400 ' defaultValue='gender' placeholder='Gender' name="gender" required={true} value={gender} onChange={e=>setgender(e.target.value)} >
