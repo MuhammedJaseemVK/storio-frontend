@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { MdOutlineArrowForward } from "react-icons/md";
-import { MdArrowBack } from "react-icons/md";
+import React,{useState} from 'react'
+import {MdOutlineArrowForward}  from "react-icons/md";
+import {MdArrowBack}  from "react-icons/md";
 import Button from '@/components/inputs/Button';
 import Input from '@/components/inputs/Input';
 import { useRouter } from 'next/router';
@@ -27,7 +27,7 @@ export default function signup() {
 
   function submitHandler(e) {
     e.preventDefault();
-    if (password1 != password2 || password1.length<8) {
+    if (password1 != password2) {
       alert("check passwords")
     }
     else {
@@ -52,11 +52,11 @@ export default function signup() {
           <Input placeholder='Password' type='text' required={true} value={password1} onChange={e => setpassword1(e.target.value)} />
           <Input placeholder='Confirm Password' required={true} type='text' value={password2} onChange={e => setpassword2(e.target.value)} />
           <Link className="text-right" href="/loginnew" ><p className='text-white justify-right text-sm text-right w-full mt-3'>Already have an account?</p></Link>
-          <Button text="Continue" />        
+          <Button text="Continue" id="signupButton"/>        
         </form>
 
+     
       </div>
-
 
 
     </div>

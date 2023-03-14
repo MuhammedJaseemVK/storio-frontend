@@ -3,12 +3,15 @@ import { useRouter } from 'next/router'
 // import MdKeyboardBackspace from "react-icons/md";
 import { MdArrowBack } from "react-icons/md";
 import Input from '@/components/inputs/Input';
+import Date from '@/components/inputs/Date';
 import Button from '@/components/inputs/Button';
 import Link from 'next/link'
 
 export default function detailEntry() {
   const router = useRouter();
   const [name, setName] = useState("")
+  const [dob, setdob] = useState("")
+  const [gender, setgender] = useState("")
   const [address, setAddress] = useState("")
   const [city, setCity] = useState("")
   const [pin, setPin] = useState("")
@@ -21,7 +24,7 @@ export default function detailEntry() {
     if(pin.length!=6){
       alert("Pin value is incorrect")
     }else{
-      router.push('/')
+      router.push('/customerhome')
     }
   }
 
@@ -29,9 +32,21 @@ export default function detailEntry() {
     <div className='bg-black h-screen flex flex-col gap-5 p-5'>
       <Link href="/signup"><MdArrowBack className='text-white text-3xl' /></Link>
       
-      <div className='text-white text-3xl font-semibold px-2 '>Tell us more about <span className='text-[#ff9900]'>Yourself</span></div>
+      <div className='text-white text-3xl font-semibold px-3 '>Tell us more about <span className='text-[#ff9900]'>Yourself</span></div>
       <form onSubmit={submitHandler} className='flex flex-col gap-3 w-full items-center px-3'>
         <Input placeholder="Name" type="text" required={true} value={name} onChange={e=>setName(e.target.value)} />
+        <Date  className='rounded-lg px-3 py-2 bg-gray-100   px-3' placeholder="Date of Birth"
+        id="date"required={true} value={dob} onChange={e=>setdob(e.target.value)} />
+        
+        <select className='rounded-lg px-3 py-2 w-72 text-gray-400 ' defaultValue='gender' placeholder='Gender' name="gender" required={true} value={gender} onChange={e=>setgender(e.target.value)} >
+          <option value="gender" hidden={true}>Select your Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="I prefer not to say">I prefer not to say</option>
+
+        </select>
+            
+        
         <Input placeholder="Address" type="text" required={true} value={address} onChange={e=>setAddress(e.target.value)} />
         <Input placeholder="City" type="text" required={true} value={city} onChange={e=>setCity(e.target.value)}/>
         <Input placeholder="PIN/ZIP" type="number" required={true} value={pin} onChange={e=>setPin(e.target.value)}/>
