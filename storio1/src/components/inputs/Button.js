@@ -6,9 +6,12 @@ export default function Button(props) {
         <button
             onClick={props.onClick}
             id={props.id || ""} className='bg-[#ff9900] flex justify-center w-full items-center text-black text-base rounded-lg px-3 py-2 mt-4'>
+>>>>>>>>> Temporary merge branch 2
             <span>{props.text}</span>
             <MdOutlineArrowForward />
+            
         </button>
+        </div>
         
     )
 }
