@@ -34,7 +34,7 @@ export default function detailEntry() {
                 <Input placeholder="Company name" type="text" required={true} value={companyname} onChange={e => setcompanyname(e.target.value)} />
                 <Input placeholder="Price" type="number" required={true} value={price} onChange={e => setprice(e.target.value)} />
                 {/* <Input placeholder="Country" type="text" required={true} value={country} onChange={e => setCountry(e.target.value)} /> */}
-                <Button text='Add' />
+                <Button text='Add'/>
 
             </form>
         </div>
