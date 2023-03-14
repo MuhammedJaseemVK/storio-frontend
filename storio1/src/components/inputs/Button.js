@@ -11,7 +11,6 @@ export default function Button(props) {
             <MdOutlineArrowForward />
             
         </button>
-        </div>
         
     )
 }
