@@ -25,17 +25,15 @@ export default function signup() {
       });
   };
 
-  function submitHandler(e) {
+  async function submitHandler(e) {
     e.preventDefault();
     if (password1 != password2 || password1.length<8) {
       alert("check passwords")
     }
     else {
       router.push('/verification')
-      return signUp({name, email, password1}).then((user) => {
-        console.log(user);
-        
-      });
+      const user = await signUp({ name, email, password1 });
+      console.log(user);
     }
 
   }
