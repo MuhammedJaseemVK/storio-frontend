@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 
+import Heading from '@/components/inputs/Heading';
+
 const socket = io("http://localhost:3000/", {
     reconnectionDelay: 1000,
     reconnection: true,
@@ -14,6 +16,7 @@ const socket = io("http://localhost:3000/", {
 function App() {
     const [isConnected, setIsConnected] = useState(socket.connected);
     const [lastPong, setLastPong] = useState(null);
+    const [products, setproducts] = useState([])
 
     useEffect(() => {
         socket.on('connect', () => {
@@ -28,7 +31,7 @@ function App() {
             setLastPong(new Date().toISOString());
         });
         socket.on('change', (data) => {
-            setLastPong(data);
+            setproducts(data.products)
         });
 
         return () => {
@@ -43,10 +46,32 @@ function App() {
     }
 
     return (
-        <div>
+        <div className='w-screen h-screen bg-black text-white p-5'>
             <p>Connected: {'' + isConnected}</p>
-            <p>Last pong: {lastPong || '-'}</p>
-            <button onClick={sendPing}>Send ping</button>
+            <Heading text1="My" text2="Cart" />
+            <div className='pt-10 gap-3'>
+            {
+                products?.map(p=>{
+                    return (
+                        <div className='rounded-md bg-gray-800 '>
+                            <div className='flex'>
+                                <div  className='w-20 h-20'>
+                                    <img src={p.imageUrl} />
+                                </div>
+                                <div className='p-3'>
+                                    <div className=''>
+                                        {p.name}
+                                    </div>
+                                    <div className='font-bold text-xl'>
+                                        {p.mrp}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })
+            }
+            </div>
         </div>
     );
 }
