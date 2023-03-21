@@ -113,3 +113,30 @@ color: #D9D9D9;
 /* .button__icon {
   font-size: 1.5em;
 } */
+
+/* virtual cart animations */
+@keyframes emerge {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes leave {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.animate-emerge {
+  animation: emerge 0.5s ease-out forwards, leave 0.5s ease-in forwards 3s;
+}
