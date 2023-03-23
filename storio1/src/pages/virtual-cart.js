@@ -131,7 +131,7 @@ function App() {
                     })
                 }
             </div>
-            <div className='absolute right-5 left-5 bottom-28'>
+            <div className='bg-gray-700 absolute right-5 left-5 bottom-0 rounded-t-2xl pb-5'>
                 <Heading text1='Total: ' text2={total} />
                 <div className='flex w-72 mx-auto'>
                     <Button text='Checkout' />
