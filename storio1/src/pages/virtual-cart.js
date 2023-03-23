@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 
 import Heading from '@/components/inputs/Heading';
+import Button from '@/components/inputs/Button';
 
 const socket = io("https://storio.virtualdom.tech", {
     reconnectionDelay: 1000,
@@ -19,6 +20,7 @@ function App() {
     const [products, setproducts] = useState([])
     const [lastAddedProduct, setlastAddedProduct] = useState({})
     const [lastRemoved, setlastRemoved] = useState({})
+    const [total, settotal] = useState(0)
 
     // global variable
     let productsArray = []
@@ -37,6 +39,15 @@ function App() {
             </div>
         );
     }
+
+    useEffect(() => {
+        let t =0 
+      products.forEach(pro => {
+        t+=pro.price
+      });
+      settotal(t)
+    }, [products])
+    
 
     useEffect(() => {
         socket.on('connect', () => {
@@ -119,6 +130,12 @@ function App() {
                         )
                     })
                 }
+            </div>
+            <div className='absolute right-5 left-5 bottom-28'>
+                <Heading text1='Total: ' text2={total} />
+                <div className='flex w-72 mx-auto'>
+                    <Button text='Checkout' />
+                </div>
             </div>
             <div className='absolute bottom-0 left-0 z-50 w-full px-5 '>
                 {
