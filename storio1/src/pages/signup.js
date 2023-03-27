@@ -26,7 +26,7 @@ export default function signup() {
     })
   };
 
-  async function submitHandler(e) {
+  async async function submitHandler(e) {
     e.preventDefault();
     if (password1 != password2) {
       setapiResponse({
