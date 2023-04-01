@@ -1,4 +1,5 @@
 import React from 'react'
+import { BiQrScan } from 'react-icons/bi'
 
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
@@ -16,12 +17,41 @@ const customerhome = () => {
           <p className='text-white'>Hello JAseem</p>
         </div>
       </div>
-                <AwesomeSlider>
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
+        <div>
+          <AwesomeSlider className='px-3'>
+            <div><img src='/offer.jpg' /></div>
+            <div><img src='/profile.jpg' /></div>
+            <div><img src='/profile.jpg' /></div>
           </AwesomeSlider>
+        </div>
+
+        {/* Bottom buttons */}
+        <div className='absolute bottom-3 w-screen pr-6'>
+          <div className='flex flex-row justify-center gap-5'>
+            <div className=' flex flex-col gap-2 items-center'>
+              <button className='bg-gray-400 p-3 text-2xl rounded-full'>
+                <BiQrScan />
+              </button>
+              <p className='text-white'>Scan Me</p>
+            </div>
+
+            <div className=' bottom-0 flex flex-col gap-2 items-center'>
+              <button className='bg-gray-400 p-3 text-2xl rounded-full'>
+                <BiQrScan />
+              </button>
+              <p className='text-white'>Scan Me</p>
+            </div>
+
+          <div className='flex flex-col gap-2 items-center'>
+            <button className='bg-gray-400 p-3 text-2xl rounded-full'>
+              <BiQrScan />
+            </button>
+            <p className='text-white'>Scan Me</p>
+          </div>
+
+        </div>
+      
+      </div>
     </div>
   )
 }
