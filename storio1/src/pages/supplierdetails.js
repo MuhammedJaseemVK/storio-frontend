@@ -5,7 +5,6 @@ import { MdArrowBack } from "react-icons/md";
 import Input from '@/components/inputs/Input';
 import Button from '@/components/inputs/Button';
 import Link from 'next/link'
-import { MdOutlineArrowForward } from "react-icons/md";
 export default function detailEntry() {
     const router = useRouter();
     const [ownername, setOwnername] = useState("")
@@ -39,10 +38,8 @@ export default function detailEntry() {
                 <Input placeholder="PIN/ZIP" type="number" required={true} value={pin} onChange={e => setPin(e.target.value)} />
                 <Input placeholder="State" type="text" required={true} value={state} onChange={e => setState(e.target.value)} />
                 <Input placeholder="Country" type="text" required={true} value={country} onChange={e => setCountry(e.target.value)} />
-                <button className='bg-[#ff9900] flex justify-center w-1/6 items-center text-black text-base rounded-lg px-3 py-2 mt-4'>
-            <span>Continue</span>
-            <MdOutlineArrowForward />
-        </button>
+                <Button text='Continue' />
+
             </form>
         </div>
     )
