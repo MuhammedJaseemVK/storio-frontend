@@ -25,7 +25,7 @@ export default function detailEntry() {
 
   return (
     <div className='bg-black h-screen flex flex-col gap-5 p-5'>
-     <Link href="/index-Try"> <MdArrowBack className='text-white text-3xl' /></Link>
+     <Link href="/index"> <MdArrowBack className='text-white text-3xl' /></Link>
       <div className='text-white text-3xl font-semibold px-3 mt-4'>Welcome <span className='text-[#ff9900]'>    Back</span></div>
       <p className='text-white text-sm text-left px-3 mt-3'>You have been missed</p>
       <form onSubmit={submitHandler} className='flex flex-col gap-3 w-full items-center px-3 mt-0.001'>

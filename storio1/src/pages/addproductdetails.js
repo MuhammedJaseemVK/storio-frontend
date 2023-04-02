@@ -29,7 +29,7 @@ export default function detailEntry() {
             <form onSubmit={submitHandler} className='flex flex-col gap-3 w-full items-center px-3'>
                 <Input placeholder="Product name" type="text" required={true} value={productname} onChange={e => setproductname(e.target.value)} />
                 <Input placeholder="Product category" type="text" required={true} value={productcategory} onChange={e =>setproductcategory(e.target.value)} />
-                <Input placeholder="Manufacture name" type="text" required={true} value={manufacturename} onChange={e =>setmanufacturename(e.target.value)} />
+                <Input placeholder="Manufacturer name" type="text" required={true} value={manufacturename} onChange={e =>setmanufacturename(e.target.value)} />
                 <Input placeholder="Product id" type="text" required={true} value={productid} onChange={e => setproductid(e.target.value)} />
                 <Input placeholder="Company name" type="text" required={true} value={companyname} onChange={e => setcompanyname(e.target.value)} />
                 <Input placeholder="Price" type="number" required={true} value={price} onChange={e => setprice(e.target.value)} />

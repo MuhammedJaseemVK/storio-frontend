@@ -102,11 +102,11 @@ function App() {
         <div className='w-screen h-screen bg-black text-white p-5 relative'>
             <p>Connected: {'' + isConnected}</p>
             <Heading text1="My" text2="Cart" />
-            <div className='pt-10 gap-3'>
+            <div className='pt-10 flex flex-col gap-3'>
                 {
                     products?.map(p => {
                         return (
-                            <div className='rounded-md bg-gray-500'>
+                            <div className='rounded-md bg-gray-100 text-gray-800'>
                                 <div className='flex'>
                                     <div className='w-20 h-20'>
                                         <img src={p.image} />
@@ -131,7 +131,7 @@ function App() {
                     })
                 }
             </div>
-            <div className='bg-gray-700 absolute right-5 left-5 bottom-0 rounded-t-2xl pb-5'>
+            <div className='bg-gray-600 absolute right-5 left-5 bottom-0 rounded-t-2xl pb-5'>
                 <Heading text1='Total: ' text2={total} />
                 <div className='flex w-72 mx-auto'>
                     <Button text='Checkout' />

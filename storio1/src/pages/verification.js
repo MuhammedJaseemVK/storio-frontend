@@ -48,7 +48,7 @@ export default function verification() {
       // User signed in successfully.
       const user = result.user;
       console.log(user);
-      router.push('/detailEntry')
+      router.push(`/detailEntry?id=${phone}`)
       // ...
     }).catch((error) => {
       // User couldn't sign in (bad verification code?)
@@ -61,7 +61,7 @@ export default function verification() {
     console.log("test")
     e.preventDefault();
     if (phone.length != 10) {
-      alert("Phone number is is incorrect")
+      alert("Phone number is incorrect")
     } else {
       if (showotp) {
         confirmOtp(otp)
@@ -72,8 +72,8 @@ export default function verification() {
   }
   return (
     <div className='bg-black h-screen p-5'>
-      <Link href='/signup'><MdArrowBack className='text-white text-3xl' /></Link>
-      <div className='text-white text-3xl mt-4 px-3'>Enter your <span className='text-[#ff9900]'>Phone</span></div>
+     <Link href='/signup'> <MdArrowBack className='text-white text-3xl' /></Link>
+      <div className='text-white text-3xl mt-4 px-3 font-semibold'>Enter your <span className='text-[#ff9900]'>Phone</span></div>
       <p className='text-white text-sm text-left mt-7 px-3'>You will receive 4 digit code for phone number verification.</p>
       <form onSubmit={submitHandler} className='flex flex-col gap-3 px-3 py-7 ' >
 
