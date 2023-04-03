@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { MdOutlineArrowForward } from "react-icons/md";
 import { MdArrowBack } from "react-icons/md";
 import Button from '@/components/inputs/Button';
+import Heading from '@/components/inputs/Heading';
 import Input from '@/components/inputs/Input';
 import { useRouter } from 'next/router';
 import Link from 'next/link'
@@ -26,7 +27,7 @@ export default function signup() {
     })
   };
 
-  async async function submitHandler(e) {
+
   async  function submitHandler(e) {
     e.preventDefault();
     if (password1 != password2) {
