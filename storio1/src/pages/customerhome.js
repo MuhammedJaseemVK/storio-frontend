@@ -41,12 +41,12 @@ const customerhome = () => {
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-gray-300 flex justify-between px-4 py-2">
         <Link href='/virtual-cart'><div className={`flex flex-col items-center cursor-pointer ${activeTab === 0 ? 'text-blue-500' : 'text-gray-500'}`} onClick={() => setActiveTab(0)}>
           <BiQrScan size={24} />
-          <span className="text-xs">Scan</span>
+          <span className="text-xs">Virtual cart</span>
         </div>
         </Link> 
         <div className={`flex flex-col items-center cursor-pointer ${activeTab === 1 ? 'text-blue-500' : 'text-gray-500'}`} onClick={() => setActiveTab(1)}>
           <BiQrScan size={24} />
-          <span className="text-xs">Virtual cart</span>
+          <span className="text-xs">Scan</span>
         </div>
         <div className={`flex flex-col items-center cursor-pointer ${activeTab === 2 ? 'text-blue-500' : 'text-gray-500'}`} onClick={() => setActiveTab(2)}>
           <BiQrScan size={24} />

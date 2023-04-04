@@ -15,6 +15,24 @@ body {
 
 }
 
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+@media (min-width: 600px) {
+  body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+
 .main-heading p {
   font-size: 54px;
   /* padding-left: 5%; */

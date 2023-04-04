@@ -1,0 +1,38 @@
+
+{
+    "name": "Storio",
+    "short_name": "Storio",
+    "icons": [
+      {
+        "src": "/qr.jpg",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/icon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "/",
+    "background_color": "#000000",
+    "display": "standalone",
+    "splash_pages": [
+        {
+          "url": "/",
+          "src": "/splash-screen.png",
+          "sizes": "2048x2732",
+          "type": "image/png"
+        }
+      ],
+    "orientation": "portrait",
+    "prefer_related_applications": true,
+    "related_applications": [
+      {
+        "platform": "play",
+        "url": "https://play.google.com/store/apps/details?id=com.example.myapp",
+        "id": "com.example.myapp"
+      }
+    ]
+  }
+  
