@@ -7,9 +7,11 @@ import { useRouter } from 'next/router'
 import Input from '@/components/inputs/Input';
 import Button from '@/components/inputs/Button';
 import Date from '@/components/inputs/Date'
+import Popup from '@/components/Popup'
 
 export default function editprofile() {
     const router = useRouter();
+    const [showPopup, setshowPopup] = useState(false);
     const [name, setName] = useState("")
     const [dob, setdob] = useState("")
     const [gender, setgender] = useState("")
@@ -18,6 +20,8 @@ export default function editprofile() {
     const [pin, setPin] = useState("")
     const [state, setState] = useState("")
     const [country, setCountry] = useState("")
+
+    const handleOnClose = () => setshowPopup(false);
 
     async function submitHandler(e) {
         e.preventDefault();
@@ -46,9 +50,10 @@ export default function editprofile() {
               <Input placeholder="PIN/ZIP" type="number" required={true} value={pin} onChange={e => setPin(e.target.value)} />
               <Input placeholder="State" type="text" required={true} value={state} onChange={e => setState(e.target.value)} />
               <Input placeholder="Country" type="text" required={true} value={country} onChange={e => setCountry(e.target.value)} />
-              <Button text='Continue' />
+              <Button onClick={()=>setshowPopup(true)} text='Continue' />
 
           </form>
+          <Popup visible={showPopup} onClose={handleOnClose} onSubmit={submitHandler}/> 
       </div>
   )
 }
