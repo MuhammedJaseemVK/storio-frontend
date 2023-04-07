@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
-
+import { MdArrowBack } from "react-icons/md";
 import Heading from '@/components/inputs/Heading';
 import Button from '@/components/inputs/Button';
+import Link from 'next/link'
+import Navbar from '@/components/inputs/navbar';
+
 
 const socket = io("https://storio.virtualdom.tech", {
     reconnectionDelay: 1000,
@@ -21,6 +24,7 @@ function App() {
     const [lastAddedProduct, setlastAddedProduct] = useState({})
     const [lastRemoved, setlastRemoved] = useState({})
     const [total, settotal] = useState(0)
+    const [animate, setanimate] = useState(true)
 
     // global variable
     let productsArray = []
@@ -41,13 +45,17 @@ function App() {
     }
 
     useEffect(() => {
-        let t =0 
-      products.forEach(pro => {
-        t+=pro.price
-      });
-      settotal(t)
+        let t = 0
+        products.forEach(pro => {
+            t += pro.price
+        });
+        settotal(t)
+        setanimate(true)
+        setTimeout(() => {
+            setanimate(false)
+        }, 2000);
     }, [products])
-    
+
 
     useEffect(() => {
         socket.on('connect', () => {
@@ -68,7 +76,7 @@ function App() {
             console.log(prevProductsArrayLen)
             setproducts(data)
             productsArray = data
-            if (removed[0] && data.length !== 1 && prevProductsArrayLen !==0) {
+            if (removed[0] && data.length !== 1 && prevProductsArrayLen !== 0) {
                 console.log(removed[0].name + " removed")
                 setlastRemoved(removed[0])
                 setTimeout(() => {
@@ -99,8 +107,11 @@ function App() {
     }
 
     return (
-        <div className='w-screen h-screen bg-black text-white p-5 relative'>
-            <p>Connected: {'' + isConnected}</p>
+        <div>
+      {/* Content of VirtualCart page */}
+      <div className='w-screen h-screen bg-black text-white p-5 relative'>
+            <Link href="/customerhome"><MdArrowBack className='text-white text-3xl' /></Link>
+            {/* <p>Connected: {'' + isConnected}</p> */}
             <Heading text1="My" text2="Cart" />
             <div className='pt-10 flex flex-col gap-3'>
                 {
@@ -131,10 +142,11 @@ function App() {
                     })
                 }
             </div>
-            <div className='bg-gray-600 absolute right-5 left-5 bottom-0 rounded-t-2xl pb-5'>
-                <Heading text1='Total: ' text2={total} />
-                <div className='flex w-72 mx-auto'>
-                    <Button text='Checkout' />
+            <div className='bg-transparent absolute right-5 left-5 bottom-16 rounded-t-2xl pb-12'>
+                <div className={`${animate ? 'scale-in-out' : ''} rounded-full px-3 py-2 bg-white  duration-300 peer mb-5 w-full flex justify-between items-center`}>
+                    <h3
+                        className='text-gray-700 text-xl md:text-4xl md:px-8 font-bold '>Total </h3>
+                    <h3 className='text-gray-800 text-2xl font-bold'>Rs.{total}</h3>
                 </div>
             </div>
             <div className='absolute bottom-0 left-0 z-50 w-full px-5 '>
@@ -213,6 +225,9 @@ function App() {
                 }
             </div>
         </div>
+      <Navbar activeTab={1} />
+    </div>
+        
     );
 }
 

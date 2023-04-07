@@ -4,12 +4,12 @@
     "short_name": "Storio",
     "icons": [
       {
-        "src": "/qr.jpg",
+        "src": "/logo.png",
         "sizes": "192x192",
         "type": "image/png"
       },
       {
-        "src": "/icon-512x512.png",
+        "src": "/a.png",
         "sizes": "512x512",
         "type": "image/png"
       }
@@ -20,7 +20,7 @@
     "splash_pages": [
         {
           "url": "/",
-          "src": "/splash-screen.png",
+          "src": "/a.png",
           "sizes": "2048x2732",
           "type": "image/png"
         }

@@ -5,6 +5,7 @@ import { MdArrowBack } from "react-icons/md";
 import Input from '@/components/inputs/Input';
 import Button from '@/components/inputs/Button';
 import Link from 'next/link'
+import { MdOutlineArrowForward } from "react-icons/md";
 export default function detailEntry() {
     const router = useRouter();
     const [ownername, setOwnername] = useState("")
@@ -28,7 +29,6 @@ export default function detailEntry() {
     return (
         <div className='bg-black h-screen flex flex-col gap-5 p-5'>
             <Link href="/signup"><MdArrowBack className='text-white text-3xl' /></Link>
-
             <div className='text-white text-3xl font-semibold px-2 '>Tell us more about <span className='text-[#ff9900]'>Yourself</span></div>
             <form onSubmit={submitHandler} className='flex flex-col gap-3 w-full items-center px-3'>
                 <Input placeholder="Company name" type="text" required={true} value={companyname} onChange={e => setCompanyname(e.target.value)} />
