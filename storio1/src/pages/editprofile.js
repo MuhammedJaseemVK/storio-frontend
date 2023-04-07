@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Input from '@/components/inputs/Input';
 import Button from '@/components/inputs/Button';
+import Date from '@/components/inputs/Date'
 
 export default function editprofile() {
     const router = useRouter();
@@ -26,9 +27,9 @@ export default function editprofile() {
   return (
       <div className='h-screen bg-black text-white p-3'>
         <Link href="/profile"><MdArrowBack className='text-white text-3xl' /></Link>
-        <Heading text1='Edit your' text2='info' />
+        <Heading text1='Edit your' text2='profile' />
 
-          <form onSubmit={submitHandler} className='flex flex-col gap-3 w-full items-center px-3'>
+          <form onSubmit={submitHandler} className='flex flex-col gap-3 w-full items-center px-3 mt-8'>
               <Input placeholder="Name" type="text" required={true} value={name} onChange={e => setName(e.target.value)} />
               <Date className='rounded-lg px-3 py-2 bg-gray-100' placeholder="Date of Birth"
                   id="date" required={true} value={dob} onChange={e => setdob(e.target.value)} />

@@ -22,7 +22,7 @@ export default function profile() {
       
       <div className='w-full text-2xl flex justify-between'>
         <Link href='/customerhome'><button><MdArrowBack /></button></Link>
-        <Link href='/'><button><BiEdit /></button></Link>
+        <Link href='/editprofile'><button><BiEdit /></button></Link>
         
       </div>
 
