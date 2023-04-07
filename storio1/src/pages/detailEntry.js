@@ -91,7 +91,7 @@ export default function detailEntry() {
           <input type="file" onChange={handleImageUpload} />
         </label>
         <Input placeholder="Name" type="text" required={true} value={name} onChange={e => setName(e.target.value)} />
-        <Date className='rounded-lg px-3 py-2 bg-gray-100   px-3' placeholder="Date of Birth"
+        <Date className='rounded-lg px-3 py-2 bg-gray-100' placeholder="Date of Birth"
           id="date" required={true} value={dob} onChange={e => setdob(e.target.value)} />
 
         <select className='rounded-lg px-3 py-2 w-72 text-gray-400 ' defaultValue='gender' placeholder='Gender' name="gender" required={true} value={gender} onChange={e => setgender(e.target.value)} >
