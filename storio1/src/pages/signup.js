@@ -58,11 +58,14 @@ export default function signup() {
         let response = await signUp({ name, email, password: password1 })
         console.log(response)
         if (response.status !== 201) throw Error("Wrong")
-        
+        // set username and token in localstorage
+        window.localStorage.setItem('username', response.data.user.username)
+        window.localStorage.setItem('tokan', response.data.token)
+
         setapiResponse({
           error: false,
           show: true,
-          heading: `Welcome ${response.data.user.username}..`
+          heading: `Welcome ${response.data.user.username}`
         })
         setTimeout(() => {
           setapiResponse({})
