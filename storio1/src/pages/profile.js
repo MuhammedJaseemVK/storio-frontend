@@ -2,7 +2,15 @@ import React from 'react'
 import { BiEdit } from 'react-icons/bi'
 import { HiCamera } from 'react-icons/hi'
 import { TbLogout } from 'react-icons/tb'
-import { MdArrowBack } from "react-icons/md";
+import { MdArrowBack } from 'react-icons/md'
+import { BsFillPersonFill } from 'react-icons/bs'
+import { FaBirthdayCake } from 'react-icons/fa'
+import { BsGenderMale } from 'react-icons/bs'
+import { FaAddressCard } from 'react-icons/fa'
+import { MdLocationCity } from 'react-icons/md'
+import { MdNumbers } from 'react-icons/md'
+import { BsBuildings } from 'react-icons/bs'
+import { FaMapMarkedAlt } from 'react-icons/fa'
 
 export default function profile() {
   return (
@@ -14,16 +22,17 @@ export default function profile() {
       </div>
 
         {/* Profile picture */}
-      <div className='relative h-[100px] w-[100px] mx-auto mt-10 '>
+      <div className='relative h-[100px] w-[100px] mx-auto mt-5 '>
           {/* <div className='absolute'> */}
           <img src='/profile.jpg' alt='profile image' className='rounded-full'/>
           {/* </div> */}
           {/* Change dp icon */}
           <div className='absolute right-0 bottom-0'>
-            <button className='bg-yellow-500 rounded-full text-small p-3'><HiCamera /></button>
+          <button className='bg-[#ff9900] rounded-full text-small p-3'><HiCamera /></button>
           </div>
       </div>
 
+      {/* Profile name */}
       <div>
         Jaseem
       </div>
@@ -32,45 +41,84 @@ export default function profile() {
         <div className='bg-orange-500 rounded-xl w-3/4 p-3 flex flex-col items-center'>
           <div className='bg-yellow-500 w-full'>
             <div className='flex flex-row justify-between px-3 py-2'>
-              <p className='text-white'>Text1</p>
+              <div className='flex flex-row gap-2 items-center'>
+                <BsFillPersonFill />
+                <p className='text-white'>Name</p>
+              </div>
               <p className='bg-grey-500'>Text2</p>
             </div>
           </div>
           <p className='w-full h-[1px] bg-white'>-</p>
           <div className='bg-yellow-500 w-full'>
             <div className='flex flex-row justify-between px-3 py-2'>
-              <p className='text-white'>Text1</p>
+              <div className='flex flex-row gap-2 items-center'>
+                <FaBirthdayCake />
+                <p className='text-white'>DOB</p>
+              </div>
               <p className='bg-grey-500'>Text2</p>
             </div>
           </div>
           <p className='w-full h-[1px] bg-white'>-</p>
           <div className='bg-yellow-500 w-full'>
             <div className='flex flex-row justify-between px-3 py-2'>
-              <p className='text-white'>Text1</p>
+              <div className='flex flex-row gap-2 items-center'>
+                <BsGenderMale />
+                <p className='text-white'>Gender</p>
+              </div>
               <p className='bg-grey-500'>Text2</p>
             </div>
           </div>
           <p className='w-full h-[1px] bg-white'>-</p>
           <div className='bg-yellow-500 w-full'>
             <div className='flex flex-row justify-between px-3 py-2'>
-              <p className='text-white'>Text1</p>
+              <div className='flex flex-row gap-2 items-center'>
+                <FaAddressCard />
+                <p className='text-white'>Address</p>
+              </div>
               <p className='bg-grey-500'>Text2</p>
             </div>
           </div>
           <p className='w-full h-[1px] bg-white'>-</p>
           <div className='bg-yellow-500 w-full'>
             <div className='flex flex-row justify-between px-3 py-2'>
-              <p className='text-white'>Text1</p>
+              <div className='flex flex-row gap-2 items-center'>
+                <MdLocationCity />
+                <p className='text-white'>City</p>
+              </div>
               <p className='bg-grey-500'>Text2</p>
             </div>
           </div>
           <p className='w-full h-[1px] bg-white'>-</p>
           <div className='bg-yellow-500 w-full'>
             <div className='flex flex-row justify-between px-3 py-2'>
-              <p className='text-white'>Text1</p>
+              <div className='flex flex-row gap-2 items-center'>
+                <MdNumbers />
+                <p className='text-white'>PIN</p>
+              </div>
               <p className='bg-grey-500'>Text2</p>
             </div>
           </div>
+          <p className='w-full h-[1px] bg-white'>-</p>
+          <div className='bg-yellow-500 w-full'>
+            <div className='flex flex-row justify-between px-3 py-2'>
+              <div className='flex flex-row gap-2 items-center'>
+                <BsBuildings />
+                <p className='text-white'>State</p>
+              </div>
+              <p className='bg-grey-500'>Text2</p>
+            </div>
+          </div>
+          <p className='w-full h-[1px] bg-white'>-</p>
+          <div className='bg-yellow-500 w-full'>
+            <div className='flex flex-row justify-between px-3 py-2'>
+              <div className='flex flex-row gap-2 items-center'>
+                <FaMapMarkedAlt />
+                <p className='text-white'>Country</p>
+              </div>
+              <p className='bg-grey-500'>Text2</p>
+            </div>
+          </div>
+
         </div>
 
         {/* Edit Button */}
