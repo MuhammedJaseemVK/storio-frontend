@@ -13,13 +13,11 @@ import { BsBuildings } from 'react-icons/bs'
 import { FaMapMarkedAlt } from 'react-icons/fa'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import Navbar from '@/components/inputs/navbar';
 
 export default function profile() {
   const router = useRouter();
 
   return (
-    <div>
     <div className='h-screen bg-black text-white p-3 flex flex-col gap-5 items-center'>
       
       <div className='w-full text-2xl flex justify-between'>
@@ -36,100 +34,102 @@ export default function profile() {
             <button className='bg-[#ff9900] rounded-full text-small p-3'><HiCamera /></button>
           </div>
       </div>
-       {/* Profile name */}
-       <div>
+
+      {/* Profile name */}
+      <div>
         Jaseem
       </div>
-      {/* Details box */}
-      <div className='bg-orange-500 rounded-xl w-3/4 p-3 flex flex-col items-center'>
-          <div className='bg-white w-full'>
+
+        {/* Details box */}
+        <div className='bg-gray-800 rounded-xl w-3/4 flex p-3 flex-col items-center'>
+          <div className='w-full'>
             <div className='flex flex-row justify-between px-3 py-2'>
               <div className='flex flex-row gap-2 items-center'>
-                <BsFillPersonFill className='color-black' />
-                <p className='text-black'>Name</p>
+                <BsFillPersonFill />
+                <p className='text-white'>Name</p>
               </div>
-              <p className='bg-grey-500 text-black'>Text2</p>
+              <p className='text-yellow-500'>Text2</p>
             </div>
           </div>
-          <p className='w-full h-[1px] bg-white'>-</p>
-          <div className='bg-yellow-500 w-full'>
+          <p className='w-full h-[1px] bg-white'></p>
+          <div className='w-full'>
             <div className='flex flex-row justify-between px-3 py-2'>
               <div className='flex flex-row gap-2 items-center'>
                 <FaBirthdayCake />
                 <p className='text-white'>DOB</p>
               </div>
-              <p className='bg-grey-500'>Text2</p>
+              <p className='text-yellow-500'>Text2</p>
             </div>
           </div>
-          <p className='w-full h-[1px] bg-white'>-</p>
-          <div className='bg-yellow-500 w-full'>
+          <p className='w-full h-[1px] bg-white'></p>
+          <div className='w-full'>
             <div className='flex flex-row justify-between px-3 py-2'>
               <div className='flex flex-row gap-2 items-center'>
                 <BsGenderMale />
                 <p className='text-white'>Gender</p>
               </div>
-              <p className='bg-grey-500'>Text2</p>
+              <p className='text-yellow-500'>Text2</p>
             </div>
           </div>
-          <p className='w-full h-[1px] bg-white'>-</p>
-          <div className='bg-yellow-500 w-full'>
+          <p className='w-full h-[1px] bg-white'></p>
+          <div className='w-full'>
             <div className='flex flex-row justify-between px-3 py-2'>
               <div className='flex flex-row gap-2 items-center'>
                 <FaAddressCard />
                 <p className='text-white'>Address</p>
               </div>
-              <p className='bg-grey-500'>Text2</p>
+              <p className='text-yellow-500'>Text2</p>
             </div>
           </div>
-          <p className='w-full h-[1px] bg-white'>-</p>
-          <div className='bg-yellow-500 w-full'>
+          <p className='w-full h-[1px] bg-white'></p>
+          <div className='w-full'>
             <div className='flex flex-row justify-between px-3 py-2'>
               <div className='flex flex-row gap-2 items-center'>
                 <MdLocationCity />
                 <p className='text-white'>City</p>
               </div>
-              <p className='bg-grey-500'>Text2</p>
+              <p className='text-yellow-500'>Text2</p>
             </div>
           </div>
-          <p className='w-full h-[1px] bg-white'>-</p>
-          <div className='bg-yellow-500 w-full'>
+          <p className='w-full h-[1px] bg-white'></p>
+          <div className='w-full'>
             <div className='flex flex-row justify-between px-3 py-2'>
               <div className='flex flex-row gap-2 items-center'>
-                
+                <MdNumbers />
                 <p className='text-white'>PIN</p>
               </div>
-              <p className='bg-grey-500'>Text2</p>
+              <p className='text-yellow-500'>Text2</p>
             </div>
           </div>
-          <p className='w-full h-[1px] bg-white'>-</p>
-          <div className='bg-yellow-500 w-full'>
+          <p className='w-full h-[1px] bg-white'></p>
+          <div className='w-full'>
             <div className='flex flex-row justify-between px-3 py-2'>
               <div className='flex flex-row gap-2 items-center'>
-               
+                <BsBuildings />
                 <p className='text-white'>State</p>
               </div>
-              <p className='bg-grey-500'>Text2</p>
+              <p className='text-yellow-500'>Text2</p>
             </div>
           </div>
-          <p className='w-full h-[1px] bg-white'>-</p>
-          <div className='bg-yellow-500 w-full'>
+          <p className='w-full h-[1px] bg-white'></p>
+          <div className='  w-full'>
             <div className='flex flex-row justify-between px-3 py-2'>
               <div className='flex flex-row gap-2 items-center'>
-                
+                <FaMapMarkedAlt />
                 <p className='text-white'>Country</p>
               </div>
-              <p className='bg-grey-500'>Text2</p>
+              <p className='text-yellow-500'>Text2</p>
             </div>
           </div>
-      </div>
-      {/* Edit Button */}
+
+        </div>
+
+        {/* Edit Button */}
         {/* Want to add a pop up confirming to logout */}
-        <button className='bg-[#ff9900] flex justify-center w-72 items-center text-black text-base rounded-lg px-3 py-2 mt-4 gap-2'>
+      <button className='bg-[#ff9900] flex justify-center w-72 items-center text-black text-base rounded-lg px-3 py-2 mt-4 gap-2'>
         Logout
         <TbLogout />
       </button>
-    </div>
-    <Navbar activeTab={3} />
     </div>
   )
 }
