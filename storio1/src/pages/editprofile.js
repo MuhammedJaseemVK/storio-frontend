@@ -29,7 +29,7 @@ export default function editprofile() {
     }
 
   return (
-      <div className='h-screen bg-black text-white p-3'>
+      <div className='h-screen text-black bg-black p-3'>
         <Link href="/profile"><MdArrowBack className='text-white text-3xl' /></Link>
         <Heading text1='Edit your' text2='profile' />
 
