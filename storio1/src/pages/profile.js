@@ -41,84 +41,84 @@ export default function profile() {
       </div>
 
         {/* Details box */}
-        <div className='bg-orange-500 rounded-xl w-3/4 p-3 flex flex-col items-center'>
-          <div className='bg-yellow-500 w-full'>
+        <div className='bg-gray-800 rounded-xl w-3/4 flex p-3 flex-col items-center'>
+          <div className='w-full'>
             <div className='flex flex-row justify-between px-3 py-2'>
               <div className='flex flex-row gap-2 items-center'>
                 <BsFillPersonFill />
                 <p className='text-white'>Name</p>
               </div>
-              <p className='bg-grey-500'>Text2</p>
+              <p className='text-yellow-500'>Text2</p>
             </div>
           </div>
-          <p className='w-full h-[1px] bg-white'>-</p>
-          <div className='bg-yellow-500 w-full'>
+          <p className='w-full h-[1px] bg-white'></p>
+          <div className='w-full'>
             <div className='flex flex-row justify-between px-3 py-2'>
               <div className='flex flex-row gap-2 items-center'>
                 <FaBirthdayCake />
                 <p className='text-white'>DOB</p>
               </div>
-              <p className='bg-grey-500'>Text2</p>
+              <p className='text-yellow-500'>Text2</p>
             </div>
           </div>
-          <p className='w-full h-[1px] bg-white'>-</p>
-          <div className='bg-yellow-500 w-full'>
+          <p className='w-full h-[1px] bg-white'></p>
+          <div className='w-full'>
             <div className='flex flex-row justify-between px-3 py-2'>
               <div className='flex flex-row gap-2 items-center'>
                 <BsGenderMale />
                 <p className='text-white'>Gender</p>
               </div>
-              <p className='bg-grey-500'>Text2</p>
+              <p className='text-yellow-500'>Text2</p>
             </div>
           </div>
-          <p className='w-full h-[1px] bg-white'>-</p>
-          <div className='bg-yellow-500 w-full'>
+          <p className='w-full h-[1px] bg-white'></p>
+          <div className='w-full'>
             <div className='flex flex-row justify-between px-3 py-2'>
               <div className='flex flex-row gap-2 items-center'>
                 <FaAddressCard />
                 <p className='text-white'>Address</p>
               </div>
-              <p className='bg-grey-500'>Text2</p>
+              <p className='text-yellow-500'>Text2</p>
             </div>
           </div>
-          <p className='w-full h-[1px] bg-white'>-</p>
-          <div className='bg-yellow-500 w-full'>
+          <p className='w-full h-[1px] bg-white'></p>
+          <div className='w-full'>
             <div className='flex flex-row justify-between px-3 py-2'>
               <div className='flex flex-row gap-2 items-center'>
                 <MdLocationCity />
                 <p className='text-white'>City</p>
               </div>
-              <p className='bg-grey-500'>Text2</p>
+              <p className='text-yellow-500'>Text2</p>
             </div>
           </div>
-          <p className='w-full h-[1px] bg-white'>-</p>
-          <div className='bg-yellow-500 w-full'>
+          <p className='w-full h-[1px] bg-white'></p>
+          <div className='w-full'>
             <div className='flex flex-row justify-between px-3 py-2'>
               <div className='flex flex-row gap-2 items-center'>
                 <MdNumbers />
                 <p className='text-white'>PIN</p>
               </div>
-              <p className='bg-grey-500'>Text2</p>
+              <p className='text-yellow-500'>Text2</p>
             </div>
           </div>
-          <p className='w-full h-[1px] bg-white'>-</p>
-          <div className='bg-yellow-500 w-full'>
+          <p className='w-full h-[1px] bg-white'></p>
+          <div className='w-full'>
             <div className='flex flex-row justify-between px-3 py-2'>
               <div className='flex flex-row gap-2 items-center'>
                 <BsBuildings />
                 <p className='text-white'>State</p>
               </div>
-              <p className='bg-grey-500'>Text2</p>
+              <p className='text-yellow-500'>Text2</p>
             </div>
           </div>
-          <p className='w-full h-[1px] bg-white'>-</p>
-          <div className='bg-yellow-500 w-full'>
+          <p className='w-full h-[1px] bg-white'></p>
+          <div className='  w-full'>
             <div className='flex flex-row justify-between px-3 py-2'>
               <div className='flex flex-row gap-2 items-center'>
                 <FaMapMarkedAlt />
                 <p className='text-white'>Country</p>
               </div>
-              <p className='bg-grey-500'>Text2</p>
+              <p className='text-yellow-500'>Text2</p>
             </div>
           </div>
 
