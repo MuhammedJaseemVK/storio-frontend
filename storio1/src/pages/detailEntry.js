@@ -46,8 +46,20 @@ export default function detailEntry() {
       // router.push('/verification')
       try {
         let phone = router.query.id
-        // TODO save and retrive username on cookies
-        let response = await verification({ username:'test3', phone, name, dob, gender, address, city, pin, state, country, image })
+        // TODO save and retrive username on localstorage
+        let username = localStorage.getItem('username')
+        if (!username) {
+          setapiResponse({
+            error: true,
+            show: true,
+            heading: "Something went wrong !"
+          })
+          setTimeout(() => {
+            setapiResponse({})
+          }, 3000)
+          return
+        }
+        let response = await verification({ username: username, phone, name, dob, gender, address, city, pin, state, country, image })
         console.log(response)
         if (response.status !== 200) throw Error("Wrong")
 
