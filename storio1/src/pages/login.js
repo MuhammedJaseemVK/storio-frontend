@@ -40,8 +40,8 @@ export default function detailEntry() {
         console.log(response)
         if (response.status !== 200) throw Error("Wrong")
         // set username and token in localstorage
-        window.localStorage.setItem('', response.data.user.username)
-        window.localStorage.setItem('tokan', response.data.token)
+        localStorage.setItem('username', response.data.user.username)
+        localStorage.setItem('tokan', response.data.token)
 
         setapiResponse({
           error: false,
