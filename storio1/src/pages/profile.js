@@ -44,7 +44,7 @@ export default function profile() {
   }
   
   function update(e){
-    e.preventDefault
+    e.preventDefault()
     router.push('/editprofile')
   }
 

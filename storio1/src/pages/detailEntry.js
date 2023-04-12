@@ -86,7 +86,7 @@ export default function detailEntry() {
         setapiResponse({
           error: false,
           show: true,
-          heading: "Successful"
+          heading: "Registration is Successful"
         })
         setTimeout(() => {
           setapiResponse({})
