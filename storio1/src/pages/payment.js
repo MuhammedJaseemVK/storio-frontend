@@ -52,7 +52,7 @@ function Payment() {
                     razorpaySignature: response.razorpay_signature,
                 };
                 console.log('hi')
-                const result = await axios.post("http://localhost:3000/payment/success", data);
+                const result = await axios.post("https://storio.virtualdom.tech/payment/success", data);
 
                 alert(result.data.msg);
             },

@@ -23,7 +23,7 @@ const CustomerHome = () => {
       let username = localStorage.getItem('username')
       let profile = await fetchProfile(username)
       setprofile(profile.data.user)
-      console.log(profile.data.user.profilePic.split('/'))
+      console.log(profile?.data?.user?.profilePic?.split('/'))
     } catch (error) {
       console.log(error)
       alert("Error!")
