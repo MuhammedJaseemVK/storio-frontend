@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React,  { useState } from 'react'
 import { useRouter } from 'next/router'
 // import MdKeyboardBackspace from "react-icons/md";
 import { MdArrowBack } from "react-icons/md";
@@ -7,6 +7,7 @@ import Button from '@/components/inputs/Button';
 import Link from 'next/link'
 import Notification from '@/components/Notification';
 import axios from 'axios'
+
 
 export default function detailEntry() {
   const router = useRouter();
@@ -39,7 +40,7 @@ export default function detailEntry() {
         console.log(response)
         if (response.status !== 200) throw Error("Wrong")
         // set username and token in localstorage
-        window.localStorage.setItem('username', response.data.user.username)
+        window.localStorage.setItem('', response.data.user.username)
         window.localStorage.setItem('tokan', response.data.token)
 
         setapiResponse({

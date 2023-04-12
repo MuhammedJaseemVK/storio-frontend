@@ -22,12 +22,32 @@ export default function detailEntry() {
   const [image, setImage] = useState(null);
   const [apiResponse, setapiResponse] = useState({})
 
-  const verification = ({ username, phone, name, dob, gender, address, city, pin, state, country, image }) => {
-    return axios.put('https://storio.virtualdom.tech/users/update', {
-      name, dob, gender, address, city, pin, state, country, image,
-      mobileNumber: phone, username
-    })
-  };
+  // const verification = ({ username, phone, name, dob, gender, address, city, pin, state, country, image }) => {
+  //   return axios.put('https://storio.virtualdom.tech/users/update', {
+  //     name, dob, gender, address, city, pin, state, country, image,
+  //     mobileNumber: phone, username
+  //   })
+  // };
+
+  async function verification({ username, phone, name, dob, gender, address, city, pin, state, country, image }) {
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('dob', dob);
+    formData.append('gender', gender);
+    formData.append('address', address);
+    formData.append('city', city);
+    formData.append('pin', pin);
+    formData.append('state', state);
+    formData.append('country', country);
+    formData.append('profilePic', image);
+    formData.append('mobileNumber', phone);
+    formData.append('username', username);
+  
+    return axios.put('https://storio.virtualdom.tech/users/update', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' }
+    });
+  }
+  
 
   async function submitHandler(e) {
     e.preventDefault();
@@ -66,7 +86,7 @@ export default function detailEntry() {
         setapiResponse({
           error: false,
           show: true,
-          heading: "Successful"
+          heading: "Registration is Successful"
         })
         setTimeout(() => {
           setapiResponse({})
@@ -103,7 +123,7 @@ export default function detailEntry() {
           <input type="file" onChange={handleImageUpload} />
         </label>
         <Input placeholder="Name" type="text" required={true} value={name} onChange={e => setName(e.target.value)} />
-        <Date className='rounded-lg px-3 py-2 bg-gray-100   px-3' placeholder="Date of Birth"
+        <Date className='rounded-lg px-3 py-2 bg-gray-100' placeholder="Date of Birth"
           id="date" required={true} value={dob} onChange={e => setdob(e.target.value)} />
 
         <select className='rounded-lg px-3 py-2 w-72 text-gray-400 ' defaultValue='gender' placeholder='Gender' name="gender" required={true} value={gender} onChange={e => setgender(e.target.value)} >
