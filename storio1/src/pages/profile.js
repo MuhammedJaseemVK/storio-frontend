@@ -19,12 +19,15 @@ export default function profile() {
   const router = useRouter();
   const [profile, setprofile] = useState({})
 
-  useEffect(async () => {
+  useEffect(() => {
     try {
-      let username = localStorage.getItem('username')
-      let profile = await fetchProfile(username)
-      setprofile(profile.data.user)
-      console.log(profile.data.user.profilePic.split('/'))
+      const fetchAndSetProfile = async () => {
+        let username = localStorage.getItem('username')
+        let profile = await fetchProfile(username)
+        setprofile(profile.data.user)
+        console.log(profile.data.user.profilePic.split('/'))
+      }
+      fetchAndSetProfile()
     } catch (error) {
       console.log(error)
       alert("Error!")
@@ -36,14 +39,14 @@ export default function profile() {
     return axios.get(`https://storio.virtualdom.tech/users/profile?username=${username}`)
   };
 
-  function Logout(e){
+  function Logout(e) {
     e.preventDefault()
-    localStorage.setItem('username','')
-    localStorage.setItem('tokan','')
+    localStorage.setItem('username', '')
+    localStorage.setItem('tokan', '')
     router.push('/')
   }
-  
-  function update(e){
+
+  function update(e) {
     e.preventDefault()
     router.push('/editprofile')
   }

@@ -20,12 +20,15 @@ const CustomerHome = () => {
   const [showModal, setShowModal] = useState(false); // state to toggle modal
   const [profile, setprofile] = useState({})
 
-  useEffect(async () => {
+  useEffect(() => {
     try {
-      let username = localStorage.getItem('username')
-      let profile = await fetchProfile(username)
-      setprofile(profile.data.user)
-      console.log(profile.data.user.profilePic.split('/'))
+      const fetchAndSetProfile = async () => {
+        let username = localStorage.getItem('username')
+        let profile = await fetchProfile(username)
+        setprofile(profile.data.user)
+        console.log(profile.data.user.profilePic.split('/'))
+      }
+      fetchAndSetProfile()
     } catch (error) {
       console.log(error)
       alert("Error!")
