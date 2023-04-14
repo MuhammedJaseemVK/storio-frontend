@@ -14,6 +14,7 @@ import { FaMapMarkedAlt } from 'react-icons/fa'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import axios from 'axios';
+import Navbar from '@/components/inputs/navbar';
 
 export default function profile() {
   const router = useRouter();
@@ -52,7 +53,7 @@ export default function profile() {
   }
 
   return (
-    <div className='h-screen bg-black text-white p-3 flex flex-col gap-5 items-center'>
+    <div className='h-screen bg-black text-white p-3 flex flex-col gap-3 items-center'>
 
       <div className='w-full text-2xl flex justify-between'>
         <Link href='/customerhome'><button><MdArrowBack /></button></Link>
@@ -61,7 +62,7 @@ export default function profile() {
       </div>
 
       {/* Profile picture */}
-      <div className='relative h-[100px] w-[100px] mx-auto mt-5 rounded-full object-cover ' >
+      <div className='relative h-[100px] w-[100px] mx-auto mt-0 rounded-full object-cover ' >
         <div className='rounded-full overflow-hidden h-[100px] w-[100px]'>
           <img src={`https://storio.virtualdom.tech/${profile.profilePic?.split('/')[1]}`} alt='profile image' className='w-full h-full object-cover' />
         </div>
@@ -77,84 +78,84 @@ export default function profile() {
       </div>
 
       {/* Details box */}
-      <div className='bg-gray-800 rounded-xl w-3/4 flex p-3 flex-col items-center'>
+      <div className=' rounded-xl w-full flex p-3 gap-2 flex-col items-center'>
         <div className='w-full'>
           <div className='flex flex-row justify-between px-3 py-2'>
             <div className='flex flex-row gap-2 items-center'>
-              <BsFillPersonFill />
-              <p className='text-white'>Name</p>
+              {/* <BsFillPersonFill /> */}
+              <p className='text-white font-bold'>Name</p>
             </div>
-            <p className='text-yellow-500'>{profile.name}</p>
+            <p className='text-yellow-500 font-bold'>{profile.name}</p>
           </div>
         </div>
-        <p className='w-full h-[1px] bg-white'></p>
+        {/* <p className='w-full h-[1px] bg-white'></p> */}
         <div className='w-full'>
           <div className='flex flex-row justify-between px-3 py-2'>
             <div className='flex flex-row gap-2 items-center'>
-              <FaBirthdayCake />
-              <p className='text-white'>DOB</p>
+              {/* <FaBirthdayCake /> */}
+              <p className='text-white font-bold'>DOB</p>
             </div>
-            <p className='text-yellow-500'>{profile.dob}</p>
+            <p className='text-yellow-500 font-bold'>{profile.dob}</p>
           </div>
         </div>
-        <p className='w-full h-[1px] bg-white'></p>
+        {/* <p className='w-full h-[1px] bg-white'></p> */}
         <div className='w-full'>
           <div className='flex flex-row justify-between px-3 py-2'>
             <div className='flex flex-row gap-2 items-center'>
-              <BsGenderMale />
-              <p className='text-white'>Gender</p>
+              {/* <BsGenderMale /> */}
+              <p className='text-white font-bold'>Gender</p>
             </div>
-            <p className='text-yellow-500'>{profile.gender}</p>
+            <p className='text-yellow-500 font-bold'>{profile.gender}</p>
           </div>
         </div>
-        <p className='w-full h-[1px] bg-white'></p>
+        {/* <p className='w-full h-[1px] bg-white'></p> */}
         <div className='w-full'>
           <div className='flex flex-row justify-between px-3 py-2'>
             <div className='flex flex-row gap-2 items-center'>
               {/* <FaAddressCard /> */}
-              <p className='text-white'>Address</p>
+              <p className='text-white font-bold'>Address</p>
             </div>
-            <p className='text-yellow-500'>{profile.address}</p>
+            <p className='text-yellow-500 font-bold text-right'>{profile.address}</p>
           </div>
         </div>
-        <p className='w-full h-[1px] bg-white'></p>
+        {/* <p className='w-full h-[1px] bg-white'></p> */}
         <div className='w-full'>
           <div className='flex flex-row justify-between px-3 py-2'>
             <div className='flex flex-row gap-2 items-center'>
               {/* <MdLocationCity /> */}
-              <p className='text-white'>City</p>
+              <p className='text-white font-bold'>City</p>
             </div>
-            <p className='text-yellow-500'>{profile.city}</p>
+            <p className='text-yellow-500 font-bold'>{profile.city}</p>
           </div>
         </div>
-        <p className='w-full h-[1px] bg-white'></p>
+        {/* <p className='w-full h-[1px] bg-white'></p> */}
         <div className='w-full'>
           <div className='flex flex-row justify-between px-3 py-2'>
             <div className='flex flex-row gap-2 items-center'>
               {/* <MdNumbers /> */}
-              <p className='text-white'>PIN</p>
+              <p className='text-white font-bold'>PIN</p>
             </div>
-            <p className='text-yellow-500'>{profile.pin}</p>
+            <p className='text-yellow-500 font-bold'>{profile.pin}</p>
           </div>
         </div>
-        <p className='w-full h-[1px] bg-white'></p>
+        {/* <p className='w-full h-[1px] bg-white'></p> */}
         <div className='w-full'>
           <div className='flex flex-row justify-between px-3 py-2'>
             <div className='flex flex-row gap-2 items-center'>
               {/* <BsBuildings /> */}
-              <p className='text-white'>State</p>
+              <p className='text-white font-bold'>State</p>
             </div>
-            <p className='text-yellow-500'>{profile.state}</p>
+            <p className='text-yellow-500 font-bold'>{profile.state}</p>
           </div>
         </div>
-        <p className='w-full h-[1px] bg-white'></p>
+        {/* <p className='w-full h-[1px] bg-white'></p> */}
         <div className='  w-full'>
           <div className='flex flex-row justify-between px-3 py-2'>
             <div className='flex flex-row gap-2 items-center'>
               {/* <FaMapMarkedAlt /> */}
-              <p className='text-white'>Country</p>
+              <p className='text-white font-bold'>Country</p>
             </div>
-            <p className='text-yellow-500'>{profile.country}</p>
+            <p className='text-yellow-500 font-bold'>{profile.country}</p>
           </div>
         </div>
 
@@ -166,6 +167,7 @@ export default function profile() {
         Logout
         <TbLogout />
       </button>
+      <Navbar activeTab={3} />
     </div>
   )
 }
