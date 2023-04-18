@@ -13,16 +13,32 @@ export default function mylist() {
     
     const addTask = (e) => {
         if(task) {
-            const newtask = {id:new Date().getTime().toString(), title:task };
+            const newtask = {id:new Date().getTime().toString(), title:task , purchased:false};
             settasks([...tasks,newtask]);
             localStorage.setItem('localTasks',JSON.stringify([...tasks,newtask]))
         }
-    }
+    };
+
     const handleDelete = (task) =>{
         const deleted = tasks.filter((t) => t.id !== task.id);
         settasks(deleted);
         localStorage.setItem('localTasks',JSON.stringify(deleted));
-    }
+    };
+
+    
+    const handleCheck = (task) => {
+        const updatedTasks = tasks.map((t) => {
+            if (t.id === task.id) {
+                return { ...t, purchased: !t.purchased};
+            } else {
+                return t;
+            }
+        });
+        settasks(updatedTasks);
+        localStorage.setItem("localTasks", JSON.stringify(updatedTasks));
+    };
+
+
   return (
     <div className='h-screen bg-black text-white'>
         <h3 className='text-white'>My List</h3>
@@ -41,7 +57,8 @@ export default function mylist() {
             <div>
                 {tasks.map((task) =>
                     <React.Fragment key={task.id}>
-                        {task.title}
+                        <button onClick={() => handleCheck(task) }  >X</button>
+                        <p className={ task.purchased ? "text-green-500" :"text-red-500" } >{task.title}</p>
                         <button onClick={() => handleDelete(task)}>Del</button>
                     </React.Fragment>
                 )}
