@@ -1,15 +1,14 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useRouter } from 'next/router';
 
 const Page1 = () => {
   const router = useRouter();
-  const isLoggedIn = false;
-
-  if (isLoggedIn) {
-    router.push('/page3');
-    return null;
+  
+useEffect(()=>{
+  if(localStorage.getItem('introseen')){
+    router.push('/mylist')
   }
-
+},[])
   return (
     <div className="h-screen bg-black flex flex-col items-center justify-center">
       <div className="flex flex-col items-center justify-center space-y-4 p-5">

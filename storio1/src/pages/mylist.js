@@ -1,10 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import styles from '../styles/ShoppingList.module.css';
 
 export default function ShoppingList() {
   const [items, setItems] = useState([]);
   const [newItem, setNewItem] = useState('');
+  
+  useEffect(() => {
+    localStorage.setItem("introseen", true)
+  }, [])
+  
 
   function handleNewItemChange(e) {
     setNewItem(e.target.value);
@@ -45,7 +50,7 @@ export default function ShoppingList() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={`${styles.container} bg-gradient-to-br from-purple-500 via-blue-500 to-teal-400 min-h-screen pb-10`}>
+      <main className={`${styles.container} min-h-screen pb-10 mylist`}>
         <h1 className="text-4xl font-bold text-center mt-7 p-5 text-white">Shopping List</h1>
         <form onSubmit={handleNewItemSubmit} className="mb-6">
           <input

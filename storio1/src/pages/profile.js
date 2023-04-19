@@ -95,7 +95,7 @@ export default function profile() {
               {/* <FaBirthdayCake /> */}
               <p className='text-white font-bold'>DOB</p>
             </div>
-            <p className='text-yellow-500 font-bold'>{profile.dob}</p>
+            <p className='text-yellow-500 font-bold'>{new Date(profile.dob).toDateString()}</p>
           </div>
         </div>
         {/* <p className='w-full h-[1px] bg-white'></p> */}

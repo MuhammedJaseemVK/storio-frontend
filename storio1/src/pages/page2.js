@@ -4,12 +4,7 @@ import Subtext from '@/components/inputs/Subtext';
 
 const Page2 = () => {
   const router = useRouter();
-  const isLoggedIn = false;
-
-  if (isLoggedIn) {
-    router.push('/page3');
-    return null;
-  }
+  
 
   return (
     <div className="h-screen bg-black flex items-center relative">

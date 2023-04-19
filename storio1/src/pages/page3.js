@@ -4,12 +4,8 @@ import Subtext from '@/components/inputs/Subtext';
 
 const Page3 = () => {
   const router = useRouter();
-  const isLoggedIn = false;
-
-  if (isLoggedIn) {
-    router.push('/page3');
-    return null;
-  }
+  
+  
 
   
   return (
