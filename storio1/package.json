@@ -18,6 +18,7 @@
     "firebase": "^9.17.2",
     "next": "^13.1.6",
     "next-pwa": "^5.6.0",
+    "pandas-js": "^0.2.4",
     "qrcode.react": "^3.1.0",
     "quagga": "^0.6.16",
     "react": "18.2.0",
@@ -26,6 +27,8 @@
     "react-icons": "^4.7.1",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.10.0",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1",
     "socket.io-client": "^4.6.1",
     "workbox-precaching": "^6.5.4"
   },

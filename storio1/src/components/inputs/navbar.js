@@ -22,7 +22,7 @@ const Navbar = ({ activeTab }) => {
           <span className="text-xs ">Virtual cart</span>
         </div>
       </Link>
-      <Link href='/scan'>
+      <Link href='/page1'>
         <div className={`flex flex-col items-center cursor-pointer ${activeTab === 2 ? 'text-blue-500' : 'text-gray-500'}`}>
           <MdOutlineRecommend size={24} />
           <span className="text-xs">My list</span>
