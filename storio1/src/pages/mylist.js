@@ -1,4 +1,7 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect} from 'react';
+import Link from 'next/link';
+import { MdArrowBack } from 'react-icons/md';
+import { BsCheckCircle, BsCheckCircleFill, BsTrash } from 'react-icons/bs';
 
 export default function mylist() {
     const [task, settask] = useState('');
@@ -40,13 +43,21 @@ export default function mylist() {
 
 
   return (
-    <div className='h-screen bg-black text-white'>
-        <h3 className='text-white'>My List</h3>
-        <input type='text' className='text-black' placeholder='Add task' value={task} onChange={(e) => settask(e.target.value)} />
-        <button type='submit' className='bg-[#ff9900]' onClick={addTask}>Add</button>
+    <div className='h-screen bg-black text-white flex flex-col gap-5 p-5'>
 
+        <Link href="/signup"><MdArrowBack className='text-white text-3xl' /></Link>
+
+        <div className='flex flex-col w-full gap-3'>
+            <h3 className='text-white text-3xl font-semibold px-3'>Shopping <span className='text-[#ff9900]'>list</span></h3>
+            
+            <div>
+                <input type='text' className='text-black p-2 rounded-l-md w-72' placeholder='Add task' value={task} onChange={(e) => settask(e.target.value)} />
+                <button type='submit' className='bg-[#ff9900] rounded-r-md p-2' onClick={addTask}>Add</button>
+            </div>
+
+        </div>
         {/* Tasks section */}
-        <div>
+        <div className='text-lg '>
             You have 
             {
                 !tasks.length? " no tasks"
@@ -57,9 +68,16 @@ export default function mylist() {
             <div>
                 {tasks.map((task) =>
                     <React.Fragment key={task.id}>
-                        <button onClick={() => handleCheck(task) }  >X</button>
-                        <p className={ task.purchased ? "text-green-500" :"text-red-500" } >{task.title}</p>
-                        <button onClick={() => handleDelete(task)}>Del</button>
+                        <div className='flex flex-row gap-2 w-72 justify-between bg-white text-black rounded-md p-2'>
+                            <button onClick={() => handleCheck(task)} >
+                                {task.purchased ? 
+                                <BsCheckCircleFill className='text-[#ff9900]' />
+                                :<BsCheckCircle className='text-[#ff9900]' /> 
+                                }
+                            </button>
+                            <p className={task.purchased ? "line-through" :"" } >{task.title}</p>
+                            <button onClick={() => handleDelete(task)}><BsTrash className='text-[#ff9900]' /></button>
+                        </div>
                     </React.Fragment>
                 )}
             </div>
