@@ -53,19 +53,20 @@ export default function mylist() {
             </div>
 
             {/* Tasks section */}
-            <div className='text-lg flex flex-col gap-2 mt-2'>
+            <div className='text-lg flex flex-col mt-2'>
                 You have
                 {
                     !items.length? " no items"
-                        : items.length=== 1 ? " 1 item"
-                            : items.length> 1 ? ` ${items.length} items`
+                        : items.length === 1 ?  ` ${items.filter((i) => !i.purchased).length} item to buy`
+                            : items.length > 1 ? ` ${items.filter((i)=>!i.purchased).length}/${items.length} items to buy`
                                 : null
                 }
 
+
                 <div>
                     {items.map((item) =>
-                        <React.Fragment key={item.id}>
-                            <div className='flex flex-row gap-2 w-full justify-between bg-white text-black rounded-md p-2'>
+                        <React.Fragment key={item.id} >
+                            <div className='flex flex-row gap-2 w-full justify-between my-2 bg-white text-black rounded-md p-2'>
                                 <button onClick={() => handleCheck(item)} >
                                     {item.purchased ?
                                         <BsCheckCircleFill className='text-[#ff9900]' />
