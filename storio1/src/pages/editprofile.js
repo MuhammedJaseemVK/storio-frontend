@@ -25,6 +25,7 @@ export default function editprofile() {
     const [country, setCountry] = useState("")
     const [image, setImage] = useState(null);
     const [apiResponse, setapiResponse] = useState({})
+    const [popupHeading, setPopupHeading] = useState('Confirm Edit');
 
     const handleOnClose = () => setshowPopup(false);
 
@@ -160,7 +161,7 @@ export default function editprofile() {
                 }} text='Continue' />
 
             </form>
-            <Popup visible={showPopup} onClose={handleOnClose} onSubmit={submitHandler} />
+            <Popup  heading={popupHeading} visible={showPopup} onClose={handleOnClose} onSubmit={submitHandler} />
             <Notification error={apiResponse.error} heading={apiResponse.heading} show={apiResponse.show} />
         </div>
     )

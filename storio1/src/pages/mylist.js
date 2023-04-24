@@ -1,74 +1,92 @@
-import { useEffect, useState } from 'react';
-import Head from 'next/head';
-import styles from '../styles/ShoppingList.module.css';
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { MdArrowBack } from 'react-icons/md';
+import { BsCheckCircle, BsCheckCircleFill, BsTrash } from 'react-icons/bs';
+import ProductRecommendation from '@/components/ProductRecommendation';
 
 export default function ShoppingList() {
-  const [items, setItems] = useState([]);
-  const [newItem, setNewItem] = useState('');
+  const [item, setitem] = useState('');
+    const [items, setitems] = useState([]);
   
   useEffect(() => {
     localStorage.setItem("introseen", true)
+    if (localStorage.getItem("localItems")) {
+      const storedList = JSON.parse(localStorage.getItem("localItems"));
+      setitems(storedList);
+  }
   }, [])
   
 
-  function handleNewItemChange(e) {
-    setNewItem(e.target.value);
-  }
+  const addItem = (e) => {
+    if (item) {
+        const newitem = { id: new Date().getTime().toString(), title: item, purchased: false };
+        setitems([...items, newitem]);
+        localStorage.setItem('localItems', JSON.stringify([...items, newitem]))
+    }
+};
 
-  function handleNewItemSubmit(e) {
-    e.preventDefault();
-    setItems([...items, { id: Date.now(), text: newItem, purchased: false }]);
-    setNewItem('');
-  }
+const handleDelete = (item) => {
+    const deleted = items.filter((i) => i.id !== item.id);
+    setitems(deleted);
+    localStorage.setItem('localItems', JSON.stringify(deleted));
+};
 
-  function togglePurchased(id) {
-    setItems(
-      items.map(item => (item.id === id ? { ...item, purchased: !item.purchased } : item))
-    );
-  }
+const handleCheck = (item) => {
+    const updatedItems = items.map((i) => {
+        if (i.id === item.id) {
+            return { ...i, purchased: !i.purchased };
+        } else {
+            return i;
+        }
+    });
+    setitems(updatedItems);
+    localStorage.setItem("localItems", JSON.stringify(updatedItems));
+};
 
-  function ShoppingListItem({ item, onTogglePurchased }) {
-    return (
-      <li className={`listItem ${styles.listItem} my-4`}>
-        <span className={`text-lg ${item.purchased ? 'line-through text-gray-500' : 'text-black'}`}>
-          {item.text}
-        </span>
-        <button
-          onClick={() => onTogglePurchased(item.id)}
-          className={`bg-${item.purchased ? 'green' : 'gray'}-500 text-white px-4 py-1 rounded hover:bg-${item.purchased ? 'green' : 'gray'}-400 ml-3 transition duration-200`}
-        >
-          {item.purchased ? 'Purchased' : 'Mark as Purchased'}
-        </button>
-      </li>
-    );
-  }
-
-  return (
-    <>
-      <Head>
-        <title>Shopping List</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={`${styles.container} min-h-screen pb-10 mylist`}>
-        <h1 className="text-4xl font-bold text-center mt-7 p-5 text-white">Shopping List</h1>
-        <form onSubmit={handleNewItemSubmit} className="mb-6">
-          <input
-            type="text"
-            value={newItem}
-            onChange={handleNewItemChange}
-            placeholder="Type a new item"
-            className="w-full p-2 border border-gray-300 rounded text-black bg-white focus:outline-none focus:border-blue-400 transition duration-200"
-          />
-        </form>
-        <div className="bg-white rounded-lg p-6 shadow-lg">
-          <ul>
-            {items.map(item => (
-              <ShoppingListItem key={item.id} item={item} onTogglePurchased={togglePurchased} />
-            ))}
-          </ul>
+return (
+  <div>
+   <ProductRecommendation/>
+ 
+    <div className='h-screen bg-black text-white  p-5'>
+      
+        <div className='flex flex-col gap-2 w-full'>
+            <Link href="/customerhome"><MdArrowBack className='text-white text-3xl' /></Link>
+            <h3 className='text-white text-3xl font-semibold '>Shopping <span className='text-[#ff9900]'>list</span></h3>
+            <div className='flex flex-row'>
+                <input type='text' className='text-black p-2 w-full rounded-l-md ' placeholder='Add item' value={item} onChange={(e) => setitem(e.target.value)} />
+                <button type='submit' className='bg-[#ff9900]  rounded-r-md p-2' onClick={addItem}>Add</button>
+            </div>
         </div>
-      </main>
-    </>
-  );
+        
+        {/* Tasks section */}
+        <div className='text-lg flex flex-col mt-2'>
+            You have
+            {
+                !items.length? " no items"
+                    : items.length === 1 ?  ` ${items.filter((i) => !i.purchased).length} item to buy`
+                        : items.length > 1 ? ` ${items.filter((i)=>!i.purchased).length}/${items.length} items to buy`
+                            : null
+            }
+
+
+            <div>
+                {items.map((item) =>
+                    <React.Fragment key={item.id} >
+                        <div className='flex flex-row gap-2 w-full justify-between my-2 bg-white text-black rounded-md p-2'>
+                            <button onClick={() => handleCheck(item)} >
+                                {item.purchased ?
+                                    <BsCheckCircleFill className='text-[#ff9900]' />
+                                    : <BsCheckCircle className='text-[#ff9900]' />
+                                }
+                            </button>
+                            <p className={item.purchased ? "line-through" : ""} >{item.title}</p>
+                            <button onClick={() => handleDelete(item)}><BsTrash className='text-[#ff9900]' /></button>
+                        </div>
+                    </React.Fragment>
+                )}
+            </div>
+        </div>
+    </div>
+    </div>
+)
 }

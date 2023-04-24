@@ -11,7 +11,6 @@ import { AiOutlineHome } from "react-icons/ai";
 import Navbar from '@/components/inputs/navbar';
 import axios from 'axios';
 
-
 const CustomerHome = () => {
   const [activeTab, setActiveTab] = useState(-1);
   const [qrValue, setQrValue] = useState(null);
@@ -55,7 +54,7 @@ const CustomerHome = () => {
       {/* Content of VirtualCart page */}
       <div className='h-screen bg-black p-3'>
         {/* Profile pic */}
-        <div className='flex w-full gap-2 justify-center mt-10'>
+        <div className='flex w-full gap-2 justify-center mt-6'>
           <div className='overflow-hidden flex gap-2 flex-col items-center'>
             <img src={`https://storio.virtualdom.tech/${profile.profilePic?.split('/')[1]}`} className='rounded-full w-[100px] h-[100px] object-cover block' />
             <p className='text-white'>Hello {profile?.name}</p>
@@ -117,10 +116,12 @@ const CustomerHome = () => {
 
 
         {/* Display image and generate QR code when clicked */}
-        <div className="flex justify-center absolute bottom-20 left-1/2 transform -translate-x-1/2 mb-6">
-          <img src="/qr.jpg" alt="My Image" className="max-w-24 h-24 cursor-pointer" onClick={handleImageClick} />
-        </div>
-
+        <div className="flex justify-center absolute bottom-20 left-1/2 transform -translate-x-1/2 mb-2">
+  <div className="flex flex-col items-center">
+    <img src="/qr.jpg" alt="My Image" className="max-w-28 h-25 cursor-pointer" onClick={handleImageClick} />
+    <h3 className='text-white font-semibold mt-1'>Generate QR Code</h3>
+  </div>
+</div>
 
       </div>
       <Navbar activeTab={0} />

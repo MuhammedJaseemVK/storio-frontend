@@ -13,9 +13,14 @@ export default function index1() {
 
   useEffect(() => {
     let username = localStorage.getItem('username')
-    if(username){
+    if (localStorage.getItem('introwatched') !== 'true') {
+      router.push('/intro1');
+      localStorage.setItem('introwatched', 'true');
+    }
+    else if(username){
       router.push('/customerhome')
     }
+    
   }, [])
   
 

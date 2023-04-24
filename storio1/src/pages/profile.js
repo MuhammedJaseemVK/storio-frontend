@@ -15,10 +15,14 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import axios from 'axios';
 import Navbar from '@/components/inputs/navbar';
+import Popup from '@/components/Popup'
 
 export default function profile() {
   const router = useRouter();
   const [profile, setprofile] = useState({})
+  const [popupHeading, setPopupHeading] = useState('Are you sure you want to logout?');
+  const [showPopup, setshowPopup] = useState(false);
+  const handleOnClose = () => setshowPopup(false);
 
   useEffect(() => {
     try {
@@ -163,11 +167,15 @@ export default function profile() {
 
       {/* Edit Button */}
       {/* Want to add a pop up confirming to logout */}
-      <button onClick={Logout} className='bg-[#ff9900] flex justify-center w-72 items-center text-black text-base rounded-lg px-3 py-2 mt-4 gap-2'>
+      <button onClick={(e) => {
+                    e.preventDefault()
+                    setshowPopup(true)
+                }} className='bg-[#ff9900] flex justify-center w-72 items-center text-black text-base rounded-lg px-3 py-2 mt-4 gap-2'>
         Logout
         <TbLogout />
       </button>
       <Navbar activeTab={3} />
+      <Popup  heading={popupHeading} visible={showPopup} onClose={handleOnClose} onSubmit={Logout} />
     </div>
   )
 }

@@ -1,22 +1,23 @@
-import React from 'react'
+import React from 'react';
 
-function Popup({visible,onClose,onSubmit}) {
+function Popup({ heading ,visible, onClose, onSubmit }) {
   const handleOnClose = (e) => {
-    if (e.target.id ==="container") onClose();
+    if (e.target.id === "container") onClose();
   };
 
-    if (!visible) return null;
+  if (!visible) return null;
+
   return (
-    <div id='container' onClick={handleOnClose} className='fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm text-black flex justify-center items-center'>
-        <div className='bg-white p-2 rounded'>
-            <p>Confirm edit?</p>
-            <div className='flex flex-row gap-5'>
-                  <button onClick={onSubmit} className='bg-[rgb(255,153,0)] rounded p-3'>Yes</button>
-                  <button onClick={onClose} className='bg-black rounded p-3 text-white'>No</button>
-            </div>
+    <div id="container" onClick={handleOnClose} className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm text-black flex justify-center items-center">
+      <div className="bg-white p-4 rounded-lg max-w-md mx-auto">
+        <p className="text-lg font-semibold mb-4">{heading}</p>
+        <div className="flex justify-between">
+          <button onClick={onClose} className="bg-gray-200 text-gray-600 py-2 px-4 rounded-lg mr-2 w-24">Cancel</button>
+          <button onClick={onSubmit} className="bg-green-500 text-white py-2 px-4 rounded-lg ml-2 w-24">Confirm</button>
         </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Popup
+export default Popup;
