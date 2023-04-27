@@ -1,7 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useRouter } from 'next/router'
 
 function Payment() {
+    const router = useRouter();
+    const [products, setproducts] = useState([])
+    const [total, settotal] = useState(0)
+
+    useEffect(() => {
+        console.log([router.query.ids])
+        try {
+            const fetchAndSetBill = async () => {
+                let username = localStorage.getItem('username')
+                let profile = await fetchBill()
+                console.log(profile)
+                setproducts(profile?.data.products)
+                settotal(profile?.data.total)
+            }
+            fetchAndSetBill()
+        } catch (error) {
+            console.log(error)
+            alert("Error!")
+        }
+    }, [])
+
+    const fetchBill = () => {
+        
+        return axios.post(`https://storio.virtualdom.tech/payment/fetchBill`,{
+            products: [router.query.ids]
+        })
+    };
+
     function loadScript(src) {
         return new Promise((resolve) => {
             const script = document.createElement("script");
@@ -40,7 +69,7 @@ function Payment() {
             key: "rzp_test_qtJBBoog39ipNo", // Enter the Key ID generated from the Dashboard
             amount: amount.toString(),
             currency: currency,
-            name: "Soumya Corp.",
+            name: "Storio",
             description: "Test Transaction",
             // image: { logo },
             order_id: order_id,
@@ -57,7 +86,7 @@ function Payment() {
                 alert(result.data.msg);
             },
             prefill: {
-                name: "Soumya Dey",
+                name: localStorage.getItem('username'),
                 email: "SoumyaDey@example.com",
                 contact: "9999999999",
             },
@@ -73,13 +102,43 @@ function Payment() {
         paymentObject.open();
     }
     return (
-        <div className="App">
-            <header className="App-header">
-                <p>Buy React now!</p>
-                <button className="App-link" onClick={displayRazorpay}>
-                    Pay ₹500
-                </button>
-            </header>
+        <div className="App bg-white min h-screen ">
+            <h2 className="text-[#ff9900] font-bold text-3xl px-5 p-5 ">Checkout </h2>
+            <div className="flex flex-col gap-1 mt-6">
+                {
+                    products?.map(p => {
+                        return (
+                            <div className='rounded-md  p-2  text-gray-800'>
+                                <div className='flex items-center'>
+                                    <div className='w-20 h-20'>
+                                        <img src={p.image} />
+                                    </div>
+                                    <div className='p-3'>
+                                        <div className=''>
+                                            {p.name}
+                                        </div>
+                                        <div className=''>
+                                            {p.brand}
+                                        </div>
+                                        <div className=''>
+                                            {p.description}
+                                        </div>
+                                        <div className='font-bold text-xl'>
+                                            {p.price}
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-1 justify-right  text-right">
+                                        <p className="text-right">Quantity:1</p>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+            </div>
+            <button className="App-link" onClick={displayRazorpay}>
+                Pay { total}
+            </button>
         </div>
     );
 }
