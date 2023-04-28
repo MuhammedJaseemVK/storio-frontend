@@ -13,8 +13,8 @@ function Payment() {
             const fetchAndSetBill = async () => {
                 let username = localStorage.getItem('username')
                 let profile = await fetchBill()
-                console.log(profile)
-                setproducts(profile?.data.products)
+                console.log(profile?.data.products)
+                setproducts([profile?.data.products])
                 settotal(profile?.data.total)
             }
             fetchAndSetBill()
@@ -25,8 +25,8 @@ function Payment() {
     }, [])
 
     const fetchBill = () => {
-        
-        return axios.post(`https://storio.virtualdom.tech/payment/fetchBill`,{
+
+        return axios.post(`https://storio.virtualdom.tech/payment/fetchBill`, {
             products: [router.query.ids]
         })
     };
@@ -55,8 +55,9 @@ function Payment() {
         }
 
         // creating a new order
-        const result = await axios.post("https://storio.virtualdom.tech/payment/orders");
 
+        const result = await axios.post("https://storio.virtualdom.tech/payment/orders")
+        console.log(result)
         if (!result) {
             alert("Server error. Are you online?");
             return;
@@ -136,9 +137,11 @@ function Payment() {
                     })
                 }
             </div>
-            <button className="App-link" onClick={displayRazorpay}>
-                Pay { total}
-            </button>
+            <div className="w-full flex justify-center absolute bottom-24">
+                <button className="App-link rounded-lg px-20 py-3 bg-[#ff9900]" onClick={displayRazorpay}>
+                    Pay {total}
+                </button>
+            </div>
         </div>
     );
 }
