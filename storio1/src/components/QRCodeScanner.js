@@ -55,7 +55,7 @@ const QRCodeScanner = () => {
           );
         })}
       </div>
-      <video ref={videoRef} width='25%' height='25%' autoPlay={true} />
+      <video className='mx-auto' ref={videoRef} width='25%' height='25%' autoPlay={true} />
     </div>
   );
 };
