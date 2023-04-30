@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 function Sidebar({ activeTab }) {
     return (
-        <div className='absolute top-0 left-0 bg-gray-900 flex flex-col gap-4 p-2 h-full '>
+        <div className='w-auto bg-gray-900 flex flex-col gap-4 p-2 h-screen '>
             <div>
                 <Link href='/shopownerhome'>
                     <div className={` flex flex-col items-center p-2 gap-2 ${activeTab === 0 ? 'text-[#ff9900]' : 'text-white' }`}>
