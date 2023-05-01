@@ -56,7 +56,7 @@ function Payment() {
 
         // creating a new order
 
-        const result = await axios.post(`http:localhost:3000/payment/orders?total=${total}`)
+        const result = await axios.post(`https://storio.virtualdom.tech/payment/orders?total=${total}`)
         console.log(result)
         if (!result) {
             alert("Server error. Are you online?");
