@@ -21,7 +21,7 @@ const PurchaseHistory = () => {
   }, [])
 
   const fetchProfile = username => {
-    return axios.get(`https://storio.virtualdom.tech/payment/orders?username=${username}`)
+    return axios.get(`https://storio.virtualdom.tech/payment/orders?id=${username}`)
   };
 
 
