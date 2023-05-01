@@ -25,7 +25,7 @@ function Payment() {
     }, [])
 
     const fetchBill = () => {
-
+        console.log(router.query.ids)
         return axios.post(`https://storio.virtualdom.tech/payment/fetchBill`, {
             products: [router.query.ids]
         })
@@ -90,7 +90,7 @@ function Payment() {
                 };
                 console.log('hi')
                 router.push('/profile')
-                const result = await axios.post("http:localhost:3000/payment/success", data);
+                const result = await axios.post("https://storio.virtualdom.tech/payment/success", data);
 
                 console.log(result.data);
             },
