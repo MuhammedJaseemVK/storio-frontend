@@ -16,7 +16,6 @@ function Sidebar({ activeTab }) {
         localStorage.setItem('username', '')
         localStorage.setItem('tokan', '')
         router.push('/')
-
     }
 
     return (

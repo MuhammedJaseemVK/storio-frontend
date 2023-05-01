@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import QrScanner from 'qr-scanner';
+import Notification from './Notification';
 
 const QRCodeScanner = () => {
   const videoRef = useRef(null);
   const [qrList, setQrList] = useState([]);
   const [shouldScan, setShouldScan] = useState(true);
+  const [apiResponse, setapiResponse] = useState({})
 
   useEffect(() => {
     QrScanner.WORKER_PATH = './qr-scanner-worker.min.js';
@@ -17,12 +19,32 @@ const QRCodeScanner = () => {
         const index = newQrList.findIndex((qr) => qr.code === result);
         if (index !== -1) {
           newQrList[index].outTime = currentTime;
+          // show exit notification
+          setapiResponse({
+            error: true,
+            show: true,
+            heading: ` ${result} exited the shop`
+          })
+
+          setTimeout(() => {
+            setapiResponse({})
+          }, 3000)
         } else {
           newQrList.push({
             code: result,
             inTime: currentTime,
             outTime: null,
           });
+          // show entry notification
+          setapiResponse({
+            error: false,
+            show: true,
+            heading: ` ${result} entered the shop`
+          })
+
+          setTimeout(() => {
+            setapiResponse({})
+          }, 3000)
         }
         setQrList(newQrList);
         localStorage.setItem('qrList', JSON.stringify(newQrList));
@@ -64,6 +86,7 @@ const QRCodeScanner = () => {
         })}
       </div>
       <video className='mx-auto' ref={videoRef} width='50%' height='50%' autoPlay={true} />
+      <Notification error={apiResponse.error} heading={apiResponse.heading} show={apiResponse.show} />
     </div>
   );
 };
