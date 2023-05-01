@@ -3,12 +3,7 @@ import QrScanner from 'qr-scanner';
 
 const QRCodeScanner = () => {
   const videoRef = useRef(null);
-
-  const [qrList, setQrList] = useState(() => {
-    const storedQrList = typeof localStorage !== 'undefined' ? localStorage.getItem('qrList') : null;
-    return storedQrList ? JSON.parse(storedQrList) : [];
-  });
-
+  const [qrList, setQrList] = useState([]);
   const [shouldScan, setShouldScan] = useState(true);
 
   useEffect(() => {
@@ -46,6 +41,13 @@ const QRCodeScanner = () => {
     };
   }, [qrList, shouldScan]);
 
+  useEffect(() => {
+    const storedQrList = localStorage.getItem('qrList');
+    if (storedQrList) {
+      setQrList(JSON.parse(storedQrList));
+    }
+  }, []);
+
   return (
     <div>
       <div>
@@ -61,7 +63,7 @@ const QRCodeScanner = () => {
           );
         })}
       </div>
-      <video className='mx-auto' ref={videoRef} width='25%' height='25%' autoPlay={true} />
+      <video className='mx-auto' ref={videoRef} width='50%' height='50%' autoPlay={true} />
     </div>
   );
 };

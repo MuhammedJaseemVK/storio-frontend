@@ -21,8 +21,6 @@ export default function shopownerhome() {
                     <div>
                         <QRCodeScanner />
                     </div>
-                    <div style={{ width: '20%', height: '50%' }}>
-                    </div>
                 </div>
             </div>
 
