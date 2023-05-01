@@ -3,7 +3,12 @@ import QrScanner from 'qr-scanner';
 
 const QRCodeScanner = () => {
   const videoRef = useRef(null);
-  const [qrList, setQrList] = useState([]);
+
+  const [qrList, setQrList] = useState(() => {
+    const storedQrList = typeof localStorage !== 'undefined' ? localStorage.getItem('qrList') : null;
+    return storedQrList ? JSON.parse(storedQrList) : [];
+  });
+
   const [shouldScan, setShouldScan] = useState(true);
 
   useEffect(() => {
@@ -25,6 +30,7 @@ const QRCodeScanner = () => {
           });
         }
         setQrList(newQrList);
+        localStorage.setItem('qrList', JSON.stringify(newQrList));
         setShouldScan(false);
         setTimeout(() => {
           setShouldScan(true);
@@ -48,8 +54,8 @@ const QRCodeScanner = () => {
             <div className='p-3 bg-white text-black rounded-md mx-auto w-80 mt-2' key={qr.code}>
               <p className='font-bold'>User: {qr.code}</p>
               <div className='flex flex-col gap-2'>
-              <p className='text-[#ff9900]'>Check in: {qr.inTime.toLocaleString()}</p>
-              {qr.outTime ? <p className='text-red-500'> Check out: {qr.outTime.toLocaleString()} </p> : null}
+                <p className='text-[#ff9900]'>Check in: {qr.inTime.toLocaleString()}</p>
+                {qr.outTime ? <p className='text-red-500'> Check out: {qr.outTime.toLocaleString()} </p> : null}
               </div>
             </div>
           );
