@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/inputs/navbar';
-
+import axios from 'axios';
 
 const PurchaseHistory = () => {
   const [orders, setorders] = useState([])
