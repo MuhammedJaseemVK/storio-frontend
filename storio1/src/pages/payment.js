@@ -14,7 +14,7 @@ function Payment() {
                 let username = localStorage.getItem('username')
                 let profile = await fetchBill()
                 console.log(profile?.data.products)
-                setproducts([profile?.data.products])
+                setproducts(profile?.data.products)
                 settotal(profile?.data.total)
             }
             fetchAndSetBill()
@@ -56,7 +56,7 @@ function Payment() {
 
         // creating a new order
 
-        const result = await axios.post("https://storio.virtualdom.tech/payment/orders")
+        const result = await axios.post(`http:localhost:3000/payment/orders?total=${total}`)
         console.log(result)
         if (!result) {
             alert("Server error. Are you online?");
@@ -76,15 +76,23 @@ function Payment() {
             order_id: order_id,
             handler: async function (response) {
                 const data = {
-                    orderCreationId: order_id,
+                    orderId: order_id,
+                    customerId: localStorage.getItem('username'),
+                    orderTotal: Number(amount),
+                    items: products.map(p => ({
+                        name: p.name,
+                        productId: p._id,
+                        quantity: 1,
+                        price: p.price,
+                    })),
                     razorpayPaymentId: response.razorpay_payment_id,
                     razorpayOrderId: response.razorpay_order_id,
-                    razorpaySignature: response.razorpay_signature,
                 };
                 console.log('hi')
-                const result = await axios.post("https://storio.virtualdom.tech/payment/success", data);
+                router.push('/profile')
+                const result = await axios.post("http:localhost:3000/payment/success", data);
 
-                alert(result.data.msg);
+                console.log(result.data);
             },
             prefill: {
                 name: localStorage.getItem('username'),
@@ -103,13 +111,13 @@ function Payment() {
         paymentObject.open();
     }
     return (
-        <div className="App bg-white min h-screen ">
+        <div className="App bg-black min h-screen ">
             <h2 className="text-[#ff9900] font-bold text-3xl px-5 p-5 ">Checkout </h2>
             <div className="flex flex-col gap-1 mt-6">
                 {
                     products?.map(p => {
                         return (
-                            <div className='rounded-md  p-2  text-gray-800'>
+                            <div className='rounded-lg  p-2 bg-gray-600 text-white'>
                                 <div className='flex items-center'>
                                     <div className='w-20 h-20'>
                                         <img src={p.image} />

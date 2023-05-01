@@ -12,8 +12,8 @@ function Popup({ heading ,visible, onClose, onSubmit }) {
       <div className="bg-white p-4 rounded-lg max-w-md mx-auto">
         <p className="text-lg font-semibold mb-4">{heading}</p>
         <div className="flex justify-between">
-          <button onClick={onClose} className="bg-gray-200 text-gray-600 py-2 px-4 rounded-lg mr-2 w-24">Cancel</button>
-          <button onClick={onSubmit} className="bg-green-500 text-white py-2 px-4 rounded-lg ml-2 w-24">Confirm</button>
+          <button onClick={onClose} className="bg-[#ff9900] text-black  py-2 px-4 rounded-lg mr-2 w-24">Cancel</button>
+          <button onClick={onSubmit} className="bg-white text-gray-600 py-2 px-4 rounded-lg ml-2 w-24">Confirm</button>
         </div>
       </div>
     </div>

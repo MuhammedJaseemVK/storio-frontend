@@ -174,7 +174,7 @@ export default function profile() {
         Logout
         <TbLogout />
       </button>
-      <Navbar activeTab={3} />
+      <Navbar activeTab={4} />
       <Popup  heading={popupHeading} visible={showPopup} onClose={handleOnClose} onSubmit={Logout} />
     </div>
   )

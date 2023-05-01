@@ -50,7 +50,20 @@ export default function detailEntry() {
         })
         setTimeout(() => {
           setapiResponse({})
-          router.push('/customerhome')
+          if(response.data.user.role=='shopowner')
+          {
+            router.push('/shopownerhome')
+            return
+          }
+          else  if(response.data.user.role=='supplier')
+          {
+            router.push('/supplier')
+            return
+          }
+          else{
+            router.push('/customerhome')
+          }
+         
         }, 3000)
       } catch (error) {
         console.log(error)

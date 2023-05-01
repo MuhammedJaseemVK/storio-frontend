@@ -34,19 +34,20 @@ export default function signup() {
   async  function submitHandler(e) {
     e.preventDefault();
 
-    if (!isValidPassword) {
-      setapiResponse({
-        error: true,
-        show: true,
-        heading: "Passwords must contain an Uppercase letter, a lowercase letter, a special symbol and a digit !"
-      })
+    // if (!isValidPassword) {
+    //   setapiResponse({
+    //     error: true,
+    //     show: true,
+    //     heading: "Passwords must contain an Uppercase letter, a lowercase letter, a special symbol and a digit !"
+    //   })
    
-      setTimeout(() => {
-        setapiResponse({})
-      }, 3000)
-    }
+    //   setTimeout(() => {
+    //     setapiResponse({})
+    //   }, 3000)
+    // }
 
-    else if (password1 != password2) {
+    // else
+     if (password1 != password2) {
       setapiResponse({
         error: true,
         show: true,
