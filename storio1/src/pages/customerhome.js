@@ -14,7 +14,7 @@ import axios from 'axios';
 const CustomerHome = () => {
   const [activeTab, setActiveTab] = useState(-1);
   const [qrValue, setQrValue] = useState(null);
-  const [showModal, setShowModal] = useState(false); // state to toggle modal
+  const [showModal, setShowModal] = useState(false); 
   const [profile, setprofile] = useState({})
 
   useEffect(() => {
@@ -23,10 +23,10 @@ const CustomerHome = () => {
         let username = localStorage.getItem('username')
         let profile = await fetchProfile(username)
         setprofile(profile.data.user)
-        console.log(profile.data.user.profilePic.split('/'))
+       
       }
       fetchAndSetProfile()
-    } catch (error) {
+    } catch (error) {// state to toggle modal
       console.log(error)
       alert("Error!")
     }

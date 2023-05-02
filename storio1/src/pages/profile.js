@@ -30,7 +30,7 @@ export default function profile() {
         let username = localStorage.getItem('username')
         let profile = await fetchProfile(username)
         setprofile(profile.data.user)
-        console.log(profile.data.user.profilePic.split('/'))
+       
       }
       fetchAndSetProfile()
     } catch (error) {

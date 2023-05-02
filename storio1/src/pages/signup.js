@@ -27,8 +27,8 @@ export default function signup() {
     })
   };
 
-  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$/;
-  const isValidPassword = passwordRegex.test(password1);
+  // const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$/;
+  // const isValidPassword = passwordRegex.test(password1);
 
 
   async  function submitHandler(e) {

@@ -100,7 +100,7 @@ export default function shopownerdetail() {
 
   return (
     <div className='bg-black h-screen flex flex-col gap-5 p-5'>
-      <Link href="/signup"><MdArrowBack className='text-white text-3xl' /></Link>
+      <Link href="/shopownerreg"><MdArrowBack className='text-white text-3xl' /></Link>
       
       <div className='text-white text-4xl font-semibold px-8 '>Tell us more about <span className='text-[#ff9900]'>Your Store</span></div>
       <form onSubmit={submitHandler} className='flex flex-col gap-3 w-full items-center px-3'>

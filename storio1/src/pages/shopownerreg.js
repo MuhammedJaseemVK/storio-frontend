@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { auth, createUserWithEmailAndPassword } from '../config/firebase-config';
 import Subtext from '@/components/inputs/Subtext';
 import axios from 'axios';
-import NotificationDesktop from '@/components/Notification';
+import NotificationDesktop from '@/components/NotificationDesktop';
 
 export default function shopowner() {
   const router = useRouter();
