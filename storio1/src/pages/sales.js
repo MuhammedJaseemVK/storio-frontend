@@ -1,62 +1,52 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-const Sales = () => {
+import { useState } from 'react';
+
+function SalesChart() {
   const [productName, setProductName] = useState('');
-  const [predictions, setPredictions] = useState([]);
+  const [chartData, setChartData] = useState(null);
 
-  const handleInputChange = (e) => {
-    setProductName(e.target.value);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // Make a request to the Python server
+    const response = await fetch(`http://127.0.0.1:5000/api/sales?productName=${productName}`);
+
+    // Parse the response data as JSON
+    const data = await response.json();
+
+    // Set the chart data state
+    setChartData(data);
   };
 
-  const handlePrediction = async () => {
-    try {
-      // Load the model and encoders
-      const modelData = await axios.get('/salesmod.json');
-      const modelDict = JSON.parse(modelData.data);
-      const model = modelDict.model;
-      const le_store_id = modelDict.le_store_id;
-      const le_item_id = modelDict.le_item_id;
-      const le_day_of_week = modelDict.le_day_of_week;
-      const le_weather = modelDict.le_weather;
-  
-      // Load and preprocess the data
-      const salesData = await axios.get('/salesdata.json');
-      const data = salesData.data;
-      data['date'] = pd.to_datetime(data['date']);
-      data['month'] = data['date'].dt.month;
-      data['year'] = data['date'].dt.year;
-      data['store_id'] = le_store_id.transform(data['store_id']);
-      data['item_id'] = le_item_id.transform(data['item_id']);
-      data['day_of_week'] = le_day_of_week.transform(data['day_of_week']);
-      data['weather'] = le_weather.transform(data['weather']);
-      const X = data.drop(['date', 'sales', 'item_name'], axis=1);
-  
-      // Make predictions for the selected product
-      const productData = X.filter((row) => row['item_id'] === productName);
-      const predictions = model.predict(productData);
-  
-      setPredictions(predictions);
-    } catch (error) {
-      console.error(error);
-    }
-  };
   return (
-    <div>
-      <label htmlFor="product-name">Enter product name:</label>
-      <input type="text" id="product-name" value={productName} onChange={handleInputChange} />
-      <button onClick={handlePrediction}>Predict sales</button>
-      {predictions.length > 0 && (
-        <div>
-          <p>Predicted sales for {productName}:</p>
-          <ul>
-            {predictions.map((prediction, i) => (
-              <li key={i}>{prediction}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+    <div className="flex justify-center bg-gray-100 h-screen">
+      <div className="w-2/3 p-8 bg-white rounded-lg shadow-lg">
+        <h1 className="text-3xl font-bold mb-8">View Sales Data</h1>
+        <form onSubmit={handleSubmit}>
+          <label className="block mb-4 font-bold text-gray-700">
+            Product Name:
+            <input
+              type="text"
+              value={productName}
+              onChange={(event) => setProductName(event.target.value)}
+              className="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            />
+          </label>
+          <button
+            type="submit"
+            className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+          >
+            Get Sales Forecasting
+          </button>
+        </form>
+        {chartData && (
+          <div className="flex justify-between mt-8">
+            <img src={`data:image/png;base64,${chartData.plotBase64}`} alt="Sales over time" className="w-1/2 rounded-lg shadow-lg" />
+            <img src={`data:image/png;base64,${chartData.plotBase64Forecast}`} alt="Sales forecast" className="w-1/2 rounded-lg shadow-lg" />
+          </div>
+        )}
+      </div>
     </div>
   );
 };
 
-export default Sales;
+export default SalesChart;
