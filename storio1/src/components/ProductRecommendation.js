@@ -3,7 +3,7 @@ import React from 'react';
 
 const ProductRecommendation = () => {
   const [model, setModel] = useState(null);
-  const [userPurchases, setUserPurchases] = useState([200, 957]);
+  const [userPurchases, setUserPurchases] = useState([200, 957,400,2]);
   const [recommendations, setRecommendations] = useState([]);
   const [showNotification, setShowNotification] = useState(false);
 
@@ -31,7 +31,7 @@ const ProductRecommendation = () => {
       const product_idx = products.findIndex((product) => product.index === purchase);
 
       const sim_scores = enumerate(cosine_sim[product_idx]).sort((a, b) => b[1] - a[1]);
-      const top_indices = sim_scores.slice(1, 3).map(([idx, _]) => idx);
+      const top_indices = sim_scores.slice(1, 2).map(([idx, _]) => idx);
 
       const recommendations = top_indices.map((idx) => products[idx]);
       topRecommendations = [...topRecommendations, ...recommendations];
@@ -63,7 +63,7 @@ const ProductRecommendation = () => {
   return (
     <div className="fixed w-full absolute bottom-10 z-50">
   {showNotification && (
-    <div className="bg-gradient-to-tl from-blue-600 to-black via-black to-black via-black to-black via-black to-black via-black to-black via-black border-gray-300 border rounded-lg shadow-lg text-white text-center p-4 rounded-md">
+    <div className="bg-gradient-to-tl from-blue-600 to-black via-black to-black via-black to-black via-black to-black via-black to-black via-black border-gray-300 border rounded-lg shadow-lg text-white text-center p-4 rounded-md rounded-md max-h-[450px] sm:max-h-[450px] overflow-y-auto">
       <h2 className="font-bold text-lg mb-2 p-2">You may also like these:</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {recommendations.map((product) => (

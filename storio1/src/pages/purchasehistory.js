@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/inputs/navbar';
 import axios from 'axios';
+import { MdArrowBack } from "react-icons/md";
+import Link from 'next/link'
 
 const PurchaseHistory = () => {
   const [orders, setorders] = useState([])
@@ -27,8 +29,9 @@ const PurchaseHistory = () => {
 
 
   return (
-    <div className='min-h-screen bg-black p-3 overflow y-auto'>
+    <div className='h-[800px] min-h-screen bg-black p-3 overflow-y-auto'>
       <div className='max-w-3xl mx-auto px-4 py-8'>
+      <Link href="/customerhome"> <MdArrowBack className='text-white text-3xl' /></Link>
         <h3 className='text-orange-500 text-3xl font-bold mb-4 p-4'>Purchase History</h3>
         <h5 className='text-white font-bold text-2xl mt-3 p-4 '>Your previous orders are:</h5>
         {
