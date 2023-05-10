@@ -17,6 +17,7 @@ export default function shopownerdetail() {
   const [city, setCity] = useState("")
   const [pin, setPin] = useState("")
   const [state, setState] = useState("")
+  const[category,setCategory]=useState("")
   const [country, setCountry] = useState("")
   const [apiResponse, setapiResponse] = useState({})
 
@@ -111,6 +112,7 @@ export default function shopownerdetail() {
         <Input placeholder="PIN/ZIP" type="number" required={true} value={pin} onChange={e=>setPin(e.target.value)}/>
         <Input placeholder="State" type="text" required={true} value={state} onChange={e=>setState(e.target.value)} />
         <Input placeholder="Country" type="text" required={true} value={country} onChange={e=>setCountry(e.target.value)}/>
+       
         <button className='bg-[#ff9900] flex justify-center w-1/6  items-center text-black text-base rounded-lg px-1 py-2 mt-4'  >Continue <MdOutlineArrowForward ></MdOutlineArrowForward></button>
         
       </form>
