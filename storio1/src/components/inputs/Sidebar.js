@@ -49,7 +49,7 @@ function Sidebar({ activeTab }) {
                     </Link>
                 </div>
                 <div>
-                    <Link href='/inventory'>
+                    <Link href='/inventorynew'>
                         <div className={` flex flex-col items-center p-2 gap-2 ${activeTab === 3 ? 'text-[#ff9900]' : 'text-white'}`}>
                             <AiOutlineDropbox className='text-2xl' />
                             <p className='text-xl'>Inventory</p>

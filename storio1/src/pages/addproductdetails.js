@@ -39,6 +39,7 @@ export default function detailEntry() {
         try {
             let resp = await addproduct()
             console.log(resp)
+            router.back()
         } catch (error) {
             console.log(error)
         }
@@ -46,7 +47,7 @@ export default function detailEntry() {
 
     return (
         <div className='bg-black h-screen flex flex-col gap-5 p-5'>
-            <Link href="/signup"><MdArrowBack className='text-white text-3xl' /></Link>
+            <Link href="/shopownerhome"><MdArrowBack className='text-white text-3xl' /></Link>
 
             <div className='text-white text-3xl font-semibold px-2 '>Add new <span className='text-[#ff9900]'>Product</span></div>
             <form onSubmit={submitHandler} className='flex flex-col gap-3 w-full items-center px-3'>
