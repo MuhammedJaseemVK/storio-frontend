@@ -1,5 +1,5 @@
 import QRCodeScanner from '@/components/QRCodeScanner'
-import Sidebar from '@/components/inputs/Sidebar';
+import Sidebar from '@/components/Sidebar';
 import React, { useState } from 'react'
 
 export default function shopownerhome() {

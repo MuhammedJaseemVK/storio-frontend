@@ -1,4 +1,4 @@
-import Sidebar from '@/components/inputs/Sidebar';
+import Sidebar from '@/components/Sidebar';
 import React from 'react'
 
 
@@ -6,8 +6,8 @@ import React from 'react'
 export default function shopownerhome() {
 
   return (
-    <div className='flex bg-black text-white'>
-      <Sidebar activeTab={0} />
+    <div className='relative bg-black'>
+      <Sidebar activeTab={1} />
       <div className='h-screen bg-black text-white p-3 justify-center items-center mx-auto'>
         <div className='flex flex-col w-full gap-2 justify-center mt-10'>
           <div className='overflow-hidden flex gap-2 flex-col items-center'>
@@ -16,8 +16,6 @@ export default function shopownerhome() {
           </div>
         </div>
       </div>
-
-
     </div>
   )
 }
