@@ -14,7 +14,7 @@ export default function detailEntry() {
     const [price, setprice] = useState("")
     const [rfid, setrfid] = useState("")
     const [brand, setbrand] = useState("")
-    const [category, setcategory] = useState("")
+    const [category, setCategory] = useState("")
     const [quantity, setquantity] = useState("")
 
 
@@ -24,11 +24,12 @@ export default function detailEntry() {
         formData.append('price', price);
         formData.append('rfid', rfid);
         formData.append('brand', brand);
+        formData.append('description', description)
         formData.append('category', category);
         formData.append('quantity', quantity);
 
         return axios.post('https://storio.virtualdom.tech/products', {
-            name, price, rfid, brand, category, quantity
+            name, price, rfid, brand, category, quantity, description
         }, {
             //   headers: { 'Content-Type': 'multipart/form-data' }
         });
@@ -44,6 +45,8 @@ export default function detailEntry() {
             console.log(error)
         }
     }
+    
+    const categoryNames = ['Electronics', 'Clothing', 'Home', 'Sports']
 
     return (
         <div className='bg-black h-screen flex flex-col gap-5 p-5'>
@@ -54,7 +57,18 @@ export default function detailEntry() {
                 <Input placeholder="Product name" type="text" required={true} value={name} onChange={e => setproductname(e.target.value)} />
                 <Input placeholder="Product Description" type="text" required={true} value={description} onChange={e => setdescription(e.target.value)} />
                 <Input placeholder="Price" type="number" required={true} value={price} onChange={e => setprice(e.target.value)} />
-                <Input placeholder="Product category" type="text" required={true} value={category} onChange={e => setcategory(e.target.value)} />
+                <select
+          value={category}
+          onChange={(event) => setCategory(event.target.value)}
+          className="form-select mt-1 block  text-gray-600 p-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring w-72 focus:ring-indigo-200 focus:ring-opacity-50"
+        >
+          <option value="">Select a category</option>
+          {categoryNames.map((productName) => (
+            <option key={productName} value={productName}>
+              {productName}
+            </option>
+          ))}
+        </select>
                 <Input placeholder="Product Brand" type="text" required={true} value={brand} onChange={e => setbrand(e.target.value)} />
                 <Input placeholder="Product RFID" type="text" required={true} value={rfid} onChange={e => setrfid(e.target.value)} />
 

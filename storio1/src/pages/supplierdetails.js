@@ -55,7 +55,7 @@ export default function detailEntry() {
       console.log("test")
     }
     else {
-      // router.push('/verification')
+       router.push('/supplierHome')
       try {
         let phone = router.query.id
         // TODO save and retrive username on localstorage

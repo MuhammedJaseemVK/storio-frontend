@@ -57,7 +57,7 @@ export default function detailEntry() {
           }
           else  if(response.data.user.role=='supplier')
           {
-            router.push('/supplier')
+            router.push('/supplierHome')
             return
           }
           else{
