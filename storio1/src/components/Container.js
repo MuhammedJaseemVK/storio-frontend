@@ -2,7 +2,10 @@ import React from 'react'
 
 import Card from './Card'
 import Middle from './Middle'
-import AwesomeSlider from 'react-awesome-slider'
+import AwesomeSlider from 'react-awesome-slider';
+import 'react-awesome-slider/dist/styles.css';
+import withAutoplay from 'react-awesome-slider/dist/autoplay';
+
 // import RightBar from './RightBar'
 // AwesomeSlider
 
@@ -11,17 +14,18 @@ import AwesomeSlider from 'react-awesome-slider'
 
 
 const Container = () => {
-    const welcome='Welcome '
+    const welcome = 'Welcome ';
+    const AutoplaySlider = withAutoplay(AwesomeSlider);
     return (
         <div className=" bg-gradient-to-r from-gray-100 to-gray-50 h-full " >
             <div className="  px-8 py-1 ">
                 <p className="text-gray-500 text-2xl">
                     {welcome}
-            
-                <span className="font-bold text-black transform -translate-y-2">
-                    Jaseem !
+
+                    <span className="font-bold text-black transform -translate-y-2">
+                        Jaseem !
                     </span>
-            </p>
+                </p>
             </div>
             <div className="flex   p-4 space-x-3">
                 <Card title="TOTAL" balance={409.0790} icon={0} />
@@ -32,13 +36,17 @@ const Container = () => {
             </div>
             <div className="flex  ml-3 mt-6 space-x-6  mr-4">
                 <Middle />
-                {/* <div>
-          <AwesomeSlider className='px-3 mt-5'>
-            <div className='object-cover '><img src='/bb.jpg' /></div>
-            <div><img src='/3.jpg' /></div>
-            <div><img src='/My project.jpg' /></div>
-          </AwesomeSlider>
-        </div> */}
+                {/* <div> */}
+                <AutoplaySlider
+                    play={true}
+                    cancelOnInteraction={false} // should stop playing on user interaction
+                    interval={6000}
+                >
+                    <div data-src="/1.jpeg" />
+                    <div data-src="/2.jpg" />
+                    <div data-src="/offer.jpg" />
+                </AutoplaySlider>
+                {/* </div> */}
                 {/* <RightBar /> */}
             </div>
         </div>
