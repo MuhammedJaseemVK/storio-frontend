@@ -1,5 +1,6 @@
 import Sidebar from '@/components/Sidebar';
 import Navbar from '@/components/Navbar';
+import Container from '@/components/Container';
 import React from 'react'
 
 
@@ -12,10 +13,13 @@ export default function shopownerhome() {
         <Sidebar activeTab={1} />
         <div className='w-full'>
           <Navbar />
+          <Container />
+
         </div>
       </div>
       <div className='h-screen bg-black text-white p-3 justify-center items-center mx-auto'>
         {/* <Navbar /> */}
+        
 
         {/* <div className='flex flex-col w-full gap-2 justify-center mt-10'>
           <div className='overflow-hidden flex gap-2 flex-col items-center'>

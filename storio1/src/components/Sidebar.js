@@ -23,7 +23,7 @@ function Sidebar({ activeTab }) {
                     <AiFillHome className="text-[#ff9900] text-2xl" />
                     <span className="text-2xl font-bold text-[#ff9900]">STORIO</span>
                 </div>
-                <div className="flex justify-center">
+                <div className="flex justify-center mt-8">
                     <ul className="list-none flex flex-col gap-4 px-3">
                         <li className={`py-2 px-8 rounded-md ${activeTab === 1 ? 'text-[#ff9900] ' : 'text-white '} hover:text-[#ff9900] hover:bg-white "`}>
                             <a href="/shopownerhome" className="flex flex-col items-center justify-center gap-2 ">
