@@ -5,11 +5,12 @@ import { AiOutlineCalendar } from "react-icons/ai";
 import { AiOutlineBell } from "react-icons/ai";
 import { AiOutlineCaretDown } from "react-icons/ai";
 // import avatarImage from "../assets/avatar.jpg"
-function Navbar() {
+function Navbar(props) {
+    var [date,setDate] = useState(new Date());
     return (
         <div className=" text-white flex justify-between bg-gray-900 px-4 w-full ">
             <div className=' text-white text-2xl f my-auto'>
-                <h1>Dashboard</h1>
+                <h1>{props.section}</h1>
                 {/* <p>hello</p> */}
             </div>
             <div className="flex justify-end p-2">
@@ -18,18 +19,19 @@ function Navbar() {
                     <span className='text-white'>Jan 30, 2022</span>
                 </div>
                 <div className="flex items-center gap-4 p-4">
-                    <BiSearch className='text-white'/>
+                    {/* <BiSearch className='text-white'/>
                     <span  className='text-white'>|</span>
                     <AiOutlineBell className='text-white' />
-                    <span  className='text-white'>|</span>
-                    <div className="flex gap-4">
-                        <img src="/profile.jpg" alt=""  className='h-10 w-10 rounded-full'/>
+                    <span  className='text-white'>|</span> */}
+                    <div className="flex gap-2 items-center">
+                        <img src="/profile.jpg" alt="" className='h-10 w-10 rounded-full' />
+                        <p>Jaseem</p>
                     </div>
-                    <AiOutlineCaretDown className='text-white'/>
+                    {/* <AiOutlineCaretDown className='text-white'/> */}
                 </div>
             </div>
         </div>
-    ) 
+    )
 }
 
 export default Navbar

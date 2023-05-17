@@ -50,7 +50,7 @@ function Sidebar({ activeTab }) {
                             </a>
                         </li>
                         <li className={`py-2 px-8 rounded-md ${activeTab === 5 ? 'text-[#ff9900] ' : 'text-white '} hover:bg-white hover:text-black "`}>
-                            <a href="/addproduct" className="flex flex-col items-center gap-2 ">
+                            <a href="/addproductdetails" className="flex flex-col items-center gap-2 ">
                                 <IoMdAddCircle className=" text-2xl" />
                                 <p className='text-xl font-bold whitespace-nowrap'>Add product</p>
                             </a>

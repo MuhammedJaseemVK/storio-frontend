@@ -37,7 +37,7 @@ export default function mylist() {
                 return i;
             }
         });
-        setitems(updatedItems);
+        setitems(updItems);
         localStorage.setItem("localItems", JSON.stringify(updatedItems));
     };
 

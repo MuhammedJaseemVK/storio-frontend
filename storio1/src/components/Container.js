@@ -14,15 +14,15 @@ import withAutoplay from 'react-awesome-slider/dist/autoplay';
 
 
 const Container = () => {
-    const welcome = 'Welcome ';
+    const welcome = 'Welcome back ';
     const AutoplaySlider = withAutoplay(AwesomeSlider);
     return (
-        <div className=" bg-gradient-to-r from-gray-100 to-gray-50 h-full " >
+        <div className=" bg-black h-full " >
             <div className="  px-8 py-1 ">
                 <p className="text-gray-500 text-2xl">
                     {welcome}
 
-                    <span className="font-bold text-black transform -translate-y-2">
+                    <span className="text-gray-500 transform -translate-y-2">
                         Jaseem !
                     </span>
                 </p>
@@ -43,7 +43,7 @@ const Container = () => {
                     interval={6000}
                 >
                     <div data-src="/1.jpeg" />
-                    <div data-src="/2.jpg" />
+                    <div data-src="/2.jpeg" />
                     <div data-src="/offer.jpg" />
                 </AutoplaySlider>
                 {/* </div> */}
