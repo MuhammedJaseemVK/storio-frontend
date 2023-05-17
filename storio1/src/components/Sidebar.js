@@ -17,11 +17,11 @@ function Sidebar({ activeTab }) {
     }
 
     return (
-        <div className='fixed left-0 bg-gray-900 h-screen w-18 flex flex-col items-center justify-between py-8 gap-8'>
+        <div className=' left-0 bg-gray-900 h-screen w-18 flex flex-col items-center justify-between py-8 gap-8'>
             <div className='flex flex-col gap-8 w-full'>
-                <div className="w-full flex justify-center items-center gap-y-5">
-                    <AiFillHome className="text-orange-500 text-2xl" />
-                    <span className="text-2xl font-bold text-orange-500">STORIO</span>
+                <div className="w-full flex justify-center gap-y-5  gap-1">
+                    <AiFillHome className="text-[#ff9900] text-2xl" />
+                    <span className="text-2xl font-bold text-[#ff9900]">STORIO</span>
                 </div>
                 <div className="flex justify-center">
                     <ul className="list-none flex flex-col gap-4 px-3">
@@ -50,9 +50,9 @@ function Sidebar({ activeTab }) {
                             </a>
                         </li>
                         <li className={`py-2 px-8 rounded-md ${activeTab === 5 ? 'text-[#ff9900] ' : 'text-white '} hover:bg-white hover:text-black "`}>
-                            <a href="/addproduct" className="flex flex-col items-center justify-center gap-2 ">
+                            <a href="/addproduct" className="flex flex-col items-center gap-2 ">
                                 <IoMdAddCircle className=" text-2xl" />
-                                <span className='text-xl font-bold'>Add product</span>
+                                <p className='text-xl font-bold whitespace-nowrap'>Add product</p>
                             </a>
                         </li>
                     </ul>
