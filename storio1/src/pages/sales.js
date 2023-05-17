@@ -1,3 +1,5 @@
+import Navbar from '@/components/Navbar';
+import Sidebar from '@/components/Sidebar';
 import { useState } from 'react';
 
 function SalesChart() {
@@ -6,7 +8,7 @@ function SalesChart() {
   const [selectedProductName, setSelectedProductName] = useState("");
 
   const productNames = ["Tata Tea", "Bajaj Appliances", "Godrej Appliances", "Havells Fans", "Parle Confectionery", "Dabur Foods", "Patanjali Home Care"];
-  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -21,10 +23,17 @@ function SalesChart() {
   };
 
   return (
-    <div className="flex justify-center bg-black w-full h-screen">
-      <div className="w-2/3 p-8 bg-black rounded-lg shadow-lg">
-        <h1 className="text-3xl text-[#ff9900] font-bold mb-8">View Sales Data</h1>
-        {/* <form onSubmit={handleSubmit}>
+
+    <div className='h-screen w-full bg-black'>
+      <div className='flex flex-row'>
+        <Sidebar activeTab={3} />
+        <div className='w-full flex flex-col'>
+          <Navbar section="Add product" />
+          <div className='my-auto'>
+            <div className="flex justify-center bg-black w-full h-screen">
+              <div className="w-2/3 p-8 bg-black rounded-lg shadow-lg">
+                <h1 className="text-3xl text-[#ff9900] font-bold mb-8">View Sales Data</h1>
+                {/* <form onSubmit={handleSubmit}>
           <label className="block mb-4 font-bold text-gray-700">
             Product Name:
             <input
@@ -41,37 +50,44 @@ function SalesChart() {
             Get Sales Forecasting
           </button>
         </form> */}
-    <form onSubmit={handleSubmit}>
-      <label className="block mb-4 font-bold text-white">
-        Product Name:
-        <select
-          value={selectedProductName}
-          onChange={(event) => setSelectedProductName(event.target.value)}
-          className="form-select mt-1 block w-full text-black rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        >
-          <option value="">Select a product</option>
-          {productNames.map((productName) => (
-            <option key={productName} value={productName}>
-              {productName}
-            </option>
-          ))}
-        </select>
-      </label>
-      <button
-        type="submit"
-        className="bg-[#ff9900] hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110"
-      >
-        Get Sales Forecasting
-      </button>
-    </form>
-        {chartData && (
-          <div className="flex justify-between mt-8 h-2/3">
-            <img src={`data:image/png;base64,${chartData.plotBase64}`} alt="Sales over time" className="w-1/2 rounded-lg shadow-lg p-5" />
-            <img src={`data:image/png;base64,${chartData.plotBase64Forecast}`} alt="Sales forecast" className="w-1/2 rounded-lg shadow-lg p-5" />
+                <form onSubmit={handleSubmit}>
+                  <label className="block mb-4 font-bold text-white">
+                    Product Name:
+                    <select
+                      value={selectedProductName}
+                      onChange={(event) => setSelectedProductName(event.target.value)}
+                      className="form-select mt-1 block w-full text-black rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    >
+                      <option value="">Select a product</option>
+                      {productNames.map((productName) => (
+                        <option key={productName} value={productName}>
+                          {productName}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  <button
+                    type="submit"
+                    className="bg-[#ff9900] hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+                  >
+                    Get Sales Forecasting
+                  </button>
+                </form>
+                {chartData && (
+                  <div className="flex justify-between mt-8 h-2/3">
+                    <img src={`data:image/png;base64,${chartData.plotBase64}`} alt="Sales over time" className="w-1/2 rounded-lg shadow-lg p-5" />
+                    <img src={`data:image/png;base64,${chartData.plotBase64Forecast}`} alt="Sales forecast" className="w-1/2 rounded-lg shadow-lg p-5" />
+                  </div>
+                )}
+              </div>
+            </div>
+
           </div>
-        )}
+        </div>
       </div>
     </div>
+
+
   );
 };
 

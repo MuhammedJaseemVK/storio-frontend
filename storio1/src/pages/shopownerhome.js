@@ -12,8 +12,10 @@ export default function shopownerhome() {
       <div className='flex flex-row'>
         <Sidebar activeTab={1} />
         <div className='w-full'>
-          <Navbar section="Dashboard"/>
-          <Container />
+          <Navbar section="Dashboard" />
+          <div className='my-auto'>
+            <Container />
+          </div>
         </div>
       </div>
     </div>

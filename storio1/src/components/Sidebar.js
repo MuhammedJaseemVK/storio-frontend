@@ -58,7 +58,7 @@ function Sidebar({ activeTab }) {
                     </ul>
                 </div>
             </div>
-            <button className="py-2.5 px-12.5 ml-[-2rem]">
+            <button className="py-2.5 px-12.5 ml-[-2rem]" onClick={Logout}>
                 <div className="text-white flex items-center justify-center gap-2 ">
                     <TbLogout className=" text-2xl" />
                     <span className='text-xl font-bold'>Logout</span>

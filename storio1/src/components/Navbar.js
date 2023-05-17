@@ -1,17 +1,38 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import styled from 'styled-components'
 import { BiSearch } from "react-icons/bi";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { AiOutlineBell } from "react-icons/ai";
-import { AiOutlineCaretDown } from "react-icons/ai";
-// import avatarImage from "../assets/avatar.jpg"
+import { BsFillPersonFill } from "react-icons/bs";
+
+import axios from 'axios';
+
 function Navbar(props) {
-    var [date,setDate] = useState(new Date());
+    const [profile, setprofile] = useState({});
+
+    useEffect(() => {
+        try {
+          const fetchAndSetProfile = async () => {
+            let username = localStorage.getItem('username')
+            let profile = await fetchProfile(username)
+            setprofile(profile.data.user)
+           
+          }
+          fetchAndSetProfile()
+        } catch (error) {
+          console.log(error)
+          alert("Error!")
+        }
+      }, [])
+    
+    
+      const fetchProfile = username => {
+        return axios.get(`https://storio.virtualdom.tech/users/profile?username=${username}`)
+      };
     return (
         <div className=" text-white flex justify-between bg-gray-900 px-4 w-full ">
             <div className=' text-white text-2xl f my-auto'>
-                <h1>{props.section}</h1>
-                {/* <p>hello</p> */}
+
             </div>
             <div className="flex justify-end p-2">
                 <div className="flex items-center gap-4 ">
@@ -24,8 +45,9 @@ function Navbar(props) {
                     <AiOutlineBell className='text-white' />
                     <span  className='text-white'>|</span> */}
                     <div className="flex gap-2 items-center">
-                        <img src="/profile.jpg" alt="" className='h-10 w-10 rounded-full' />
-                        <p>Jaseem</p>
+                        {/* <img src={`https://storio.virtualdom.tech/${profile.profilePic?.split('/')[1]}`}alt="" className='h-10 w-10 rounded-full' /> */}
+                        <BsFillPersonFill className='text-md' />
+                        <p>{profile.name}</p>
                     </div>
                     {/* <AiOutlineCaretDown className='text-white'/> */}
                 </div>
