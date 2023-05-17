@@ -1,7 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useRouter } from 'next/router'
 
 function Payment() {
+    const router = useRouter();
+    const [products, setproducts] = useState([])
+    const [total, settotal] = useState(0)
+
+    useEffect(() => {
+        console.log([router.query.ids])
+        try {
+            const fetchAndSetBill = async () => {
+                let username = localStorage.getItem('username')
+                let profile = await fetchBill()
+                console.log(profile?.data.products)
+                setproducts(profile?.data.products)
+                settotal(profile?.data.total)
+            }
+            fetchAndSetBill()
+        } catch (error) {
+            console.log(error)
+            alert("Error!")
+        }
+    }, [])
+
+    const fetchBill = () => {
+        console.log(router.query.ids)
+        return axios.post(`https://storio.virtualdom.tech/payment/fetchBill`, {
+            products: [router.query.ids]
+        })
+    };
+
     function loadScript(src) {
         return new Promise((resolve) => {
             const script = document.createElement("script");
@@ -26,8 +55,9 @@ function Payment() {
         }
 
         // creating a new order
-        const result = await axios.post("http://localhost:3000/payment/orders");
 
+        const result = await axios.post(`https://storio.virtualdom.tech/payment/orders?total=${total}`)
+        console.log(result)
         if (!result) {
             alert("Server error. Are you online?");
             return;
@@ -40,24 +70,32 @@ function Payment() {
             key: "rzp_test_qtJBBoog39ipNo", // Enter the Key ID generated from the Dashboard
             amount: amount.toString(),
             currency: currency,
-            name: "Soumya Corp.",
+            name: "Storio",
             description: "Test Transaction",
             // image: { logo },
             order_id: order_id,
             handler: async function (response) {
                 const data = {
-                    orderCreationId: order_id,
+                    orderId: order_id,
+                    customerId: localStorage.getItem('username'),
+                    orderTotal: Number(amount),
+                    items: products.map(p => ({
+                        name: p.name,
+                        productId: p._id,
+                        quantity: 1,
+                        price: p.price,
+                    })),
                     razorpayPaymentId: response.razorpay_payment_id,
                     razorpayOrderId: response.razorpay_order_id,
-                    razorpaySignature: response.razorpay_signature,
                 };
                 console.log('hi')
+                router.push('/profile')
                 const result = await axios.post("https://storio.virtualdom.tech/payment/success", data);
 
-                alert(result.data.msg);
+                console.log(result.data);
             },
             prefill: {
-                name: "Soumya Dey",
+                name: localStorage.getItem('username'),
                 email: "SoumyaDey@example.com",
                 contact: "9999999999",
             },
@@ -73,13 +111,45 @@ function Payment() {
         paymentObject.open();
     }
     return (
-        <div className="App">
-            <header className="App-header">
-                <p>Buy React now!</p>
-                <button className="App-link" onClick={displayRazorpay}>
-                    Pay ₹500
+        <div className="App bg-black min h-screen ">
+            <h2 className="text-[#ff9900] font-bold text-3xl px-5 p-5 ">Checkout </h2>
+            <div className="flex flex-col gap-1 mt-6">
+                {
+                    products?.map(p => {
+                        return (
+                            <div className='rounded-lg  p-2 bg-gray-600 text-white'>
+                                <div className='flex items-center'>
+                                    <div className='w-20 h-20'>
+                                        <img src={p.image} />
+                                    </div>
+                                    <div className='p-3'>
+                                        <div className=''>
+                                            {p.name}
+                                        </div>
+                                        <div className=''>
+                                            {p.brand}
+                                        </div>
+                                        <div className=''>
+                                            {p.description}
+                                        </div>
+                                        <div className='font-bold text-xl'>
+                                            {p.price}
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-1 justify-right  text-right">
+                                        <p className="text-right">Quantity:1</p>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+            </div>
+            <div className="w-full flex justify-center absolute bottom-24">
+                <button className="App-link rounded-lg px-20 py-3 bg-[#ff9900]" onClick={displayRazorpay}>
+                    Pay {total}
                 </button>
-            </header>
+            </div>
         </div>
     );
 }

@@ -27,10 +27,27 @@ export default function signup() {
     })
   };
 
+  // const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$/;
+  // const isValidPassword = passwordRegex.test(password1);
+
 
   async  function submitHandler(e) {
     e.preventDefault();
-    if (password1 != password2) {
+
+    // if (!isValidPassword) {
+    //   setapiResponse({
+    //     error: true,
+    //     show: true,
+    //     heading: "Passwords must contain an Uppercase letter, a lowercase letter, a special symbol and a digit !"
+    //   })
+   
+    //   setTimeout(() => {
+    //     setapiResponse({})
+    //   }, 3000)
+    // }
+
+    // else
+     if (password1 != password2) {
       setapiResponse({
         error: true,
         show: true,

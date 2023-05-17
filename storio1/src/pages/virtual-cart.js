@@ -234,7 +234,11 @@ function App() {
             {showpopup && <Confirmpayment 
             show={showpopup}
                 cancelpayment={() => setshowpopup(false)}
-                confirmpayment={()=> router.push('/payment')}
+                confirmpayment={()=> {
+                    let str =''
+                    str = products.map(obj => obj._id).join('$')
+                    router.push(`/payment?ids=${str}`)
+                }}
             />}
             <Navbar activeTab={1} />
         </div>
