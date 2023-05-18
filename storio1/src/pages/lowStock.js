@@ -29,7 +29,7 @@ export default function inventory() {
 
         <div className='h-screen w-full bg-black'>
             <div className='flex flex-row'>
-                <SidebarSupplier activeTab={1} />
+                <SidebarSupplier activeTab={2} />
                 <div className='w-full flex flex-col'>
                     <Navbar section="Add product" />
                     <div className='my-auto'>
@@ -37,7 +37,7 @@ export default function inventory() {
                         <div className=" bg-black mx overflow-y-auto h-screen">
 
                             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                                <h2 className='text-2xl text-white font-bold  p-5 '> Stock Details</h2>
+                                <h2 className='text-2xl text-white font-bold  p-5 '> Low Stock Details</h2>
                                 <table className="w-full text-white bg-black">
                                     <thead>
                                         <tr className="bg-[#ff9900]">
@@ -50,16 +50,23 @@ export default function inventory() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {products.map(p =>
-                                            <tr key={p.name} className="bg-gray-700 hover:bg-gray-800">
-                                                <td className="py-2 px-4">{p.name}</td>
-                                                <td className="py-2 px-4">{p.description}</td>
-                                                <td className="py-2 px-4">{p.price}</td>
-                                                <td className="py-2 px-4">{p.brand}</td>
-                                                <td className="py-2 px-4">{p.category}</td>
-                                                <td className={`py-2 px-4 ${p.quantity <= 5 ? 'text-red-500' : ''}`}>{p.quantity}</td>
-                                            </tr>
-                                        )}
+                                        {products.map(p => {
+                                            if (p.quantity < 5) {
+                                                return (
+                                                    <tr key={p.name} className="bg-gray-700 hover:bg-gray-800">
+                                                        <td className="py-2 px-4">{p.name}</td>
+                                                        <td className="py-2 px-4">{p.description}</td>
+                                                        <td className="py-2 px-4">{p.price}</td>
+                                                        <td className="py-2 px-4">{p.brand}</td>
+                                                        <td className="py-2 px-4">{p.category}</td>
+                                                        <td className={`py-2 px-4 ${p.quantity <= 5 ? 'text-red-500' : ''}`}>{p.quantity}</td>
+                                                    </tr>
+                                                );
+                                            } else {
+                                                return null; // Skip rendering the table row if quantity is not less than 5
+                                            }
+                                        })}
+
                                     </tbody>
                                 </table>
                             </div>
@@ -67,8 +74,8 @@ export default function inventory() {
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
 
-            )
+    )
 }
 

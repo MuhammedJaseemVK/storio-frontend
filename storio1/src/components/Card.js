@@ -1,5 +1,5 @@
 import React from 'react'
-import {MdAttachMoney} from 'react-icons/md';
+import {TbCoinRupee} from 'react-icons/tb';
 // import DoneIcon from '@material-ui/icons/Done';
 // import EcoIcon from '@material-ui/icons/Eco';
 // import LockIcon from '@material-ui/icons/Lock';
@@ -7,7 +7,7 @@ import {MdAttachMoney} from 'react-icons/md';
 
 const Style = "text-white text-xl"
 
-const arrayIcon = [<MdAttachMoney fontSize="small" className={Style} />, <MdAttachMoney fontSize="small" className={Style} />, <MdAttachMoney fontSize="small" className={Style} />, <MdAttachMoney fontSize="small" className={Style} />]
+const arrayIcon = [<TbCoinRupee fontSize="small" className={Style} />, <TbCoinRupee fontSize="small" className={Style} />, <TbCoinRupee fontSize="small" className={Style} />, <TbCoinRupee fontSize="small" className={Style} />]
 const Color = ["from-indigo-500 to-blue-500", "from-blue-400 to-blue-300", "from-green-500 to-green-400", "from-yellow-600 to-yellow-500"]
 
 
@@ -29,10 +29,10 @@ const Card = (props) => {
                 {props.title}
             </p>
             <p className="text-gray-50 text-lg  font-semibold  ">
-                {props.balance} EGLD
+                {props.balance} INR
             </p>
-            <p className="text-gray-300  text-sm ">
-                ${balance}
+            <p className="text-gray-300  text-sm flex justify-start items-center">
+            <TbCoinRupee />{balance}
             </p>
 
 
