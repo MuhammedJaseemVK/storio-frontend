@@ -13,7 +13,7 @@ import { AiOutlineHome } from "react-icons/ai";
 import Navbar from '@/components/inputs/navbar';
 import axios from 'axios';
 
-const CustomerHome = () => {
+const customerhome = () => {
   const [activeTab, setActiveTab] = useState(-1);
   const [qrValue, setQrValue] = useState(null);
   const [showModal, setShowModal] = useState(false); 
