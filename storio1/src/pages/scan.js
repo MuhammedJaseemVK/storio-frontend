@@ -1,6 +1,7 @@
+import Navbar from '@/components/Navbar';
 import QRCodeScanner from '@/components/QRCodeScanner'
-import Sidebar from '@/components/inputs/Sidebar';
-import React, { useState } from 'react'
+import Sidebar from '@/components/Sidebar';
+import React, { useState } from 'react';
 
 export default function shopownerhome() {
     const [showQR, setShowQR] = useState(false);
@@ -8,13 +9,16 @@ export default function shopownerhome() {
         setShowQR(true);
     }
     return (
-        <div className='flex bg-black text-white'>
-            <Sidebar activeTab={2} />
-            <div className='h-screen bg-black text-white p-3 justify-center items-center mx-auto'>
+            <div className='h-screen w-full bg-black'>
+            <div className='flex flex-row'>
+              <Sidebar activeTab={2} />
+              <div className='w-full'>
+                <Navbar section="Scan"/>
                 <div>
                     <QRCodeScanner />
                 </div>
+              </div>
             </div>
-        </div>
+          </div>
     )
 }

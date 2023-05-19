@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BiQrScan } from 'react-icons/bi';
+import Quagga from 'quagga';
+console.log(Quagga);
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
 import Link from 'next/link';
@@ -130,4 +132,4 @@ const CustomerHome = () => {
   );
 };
 
-export default CustomerHome;
+export default customerhome;

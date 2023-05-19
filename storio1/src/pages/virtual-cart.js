@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
-import { MdArrowBack } from "react-icons/md";
+
 import Heading from '@/components/inputs/Heading';
 import Button from '@/components/inputs/Button';
 import Link from 'next/link'
@@ -55,17 +55,13 @@ function App() {
     }
 
     useEffect(() => {
-        let t = 0
-        products.forEach(pro => {
-            t += pro.price
-        });
-        settotal(t)
-        setanimate(true)
-        setTimeout(() => {
-            setanimate(false)
-        }, 2000);
+        let t =0 
+      products.forEach(pro => {
+        t+=pro.price
+      });
+      settotal(t)
     }, [products])
-
+    
 
     useEffect(() => {
         socket.on('connect', () => {
@@ -86,7 +82,7 @@ function App() {
             console.log(prevProductsArrayLen)
             setproducts(data)
             productsArray = data
-            if (removed[0] && data.length !== 1 && prevProductsArrayLen !== 0) {
+            if (removed[0] && data.length !== 1 && prevProductsArrayLen !==0) {
                 console.log(removed[0].name + " removed")
                 setlastRemoved(removed[0])
                 setTimeout(() => {
