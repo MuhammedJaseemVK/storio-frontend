@@ -104,7 +104,7 @@ export default function detailEntry() {
   return (
     <div className='bg-black h-screen flex flex-col gap-5 p-5'>
       <Link href="/signup"><MdArrowBack className='text-white text-3xl' /></Link>
-      <div className='text-white text-3xl font-semibold px-2 '>Tell us more about <span className='text-[#ff9900]'>Yourself</span></div>
+      <div className='text-white text-3xl font-semibold px-2 '>Tell us more about <span className='text-[#ff9900]'>Company</span></div>
       <form onSubmit={submitHandler} className='flex flex-col gap-3 w-full items-center px-3'>
         <Input placeholder="Company name" type="text" required={true} value={companyName} onChange={e => setCompanyname(e.target.value)} />
         <Input placeholder="Owner name" type="text" required={true} value={ownername} onChange={e => setOwnerName(e.target.value)} />
@@ -117,7 +117,7 @@ export default function detailEntry() {
         <select
           value={category}
           onChange={(event) => setCategory(event.target.value)}
-          className="form-select mt-1 block w-full text-black rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          className="form-select mt-1 block w-72 text-gray-600 p-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
         >
           <option value="">Select a category</option>
           {categoryNames.map((productName) => (

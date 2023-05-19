@@ -58,20 +58,20 @@ export default function profile() {
     <Link href='/editprofile'><button className='bg-transparent'><BiEdit className='text-white' /></button></Link>
   </div>
 
-  <div className='relative h-32 w-32 mx-auto mt-0 rounded-full overflow-hidden'>
+  <div className='relative top-0  h-20 w-20 mx-auto mt-0 rounded-full overflow-hidden'>
     <img src={`https://storio.virtualdom.tech/${profile.profilePic?.split('/')[1]}`} alt='profile image' className='w-full h-full object-cover' />
-    <div className='absolute right-2 bottom-3'>
-      <button onClick={update} className='bg-yellow-500 rounded-full text-small p-3'><HiCamera className='text-white' /></button>
+    <div className='absolute right-1 text-sm bottom-1'>
+      <button onClick={update} className='bg-yellow-500 rounded-full text-sm p-2'><HiCamera className='text-white text-sm' /></button>
     </div>
   </div>
 
-  <div className='text-2xl mt-4 p-3 font-semibold'>
+  <div className='text-xl mt-1 p-1 font-semibold'>
     {profile.username}
   </div>
 
-  <div className='rounded-xl w-full flex flex-col gap-1 p-4 bg-gradient-to-t from-[#ff9900]  via-black via-black  via-black via-black  via-black via-black via-black via-black  via-black via-black  via-black via-black  via-black via-black via-black via-black to-black '>
+  <div className='rounded-xl w-full flex flex-col gap-1 p-1 bg-gradient-to-t from-[#ff9900]  via-black via-black  via-black via-black  via-black via-black via-black via-black  via-black via-black  via-black via-black  via-black via-black via-black via-black to-black '>
     <div className='flex flex-row justify-between px-3 py-2 bg-white rounded-lg mb-2'>
-      <div className='flex flex-row gap-2 items-center'>
+      <div className='flex flex-row gap-1 items-center'>
         <BsFillPersonFill className='text-gray-600' />
         <p className='text-gray-600 font-bold'>Name</p>
       </div>
