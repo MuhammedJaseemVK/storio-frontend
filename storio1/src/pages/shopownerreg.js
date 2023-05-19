@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { MdOutlineArrowForward } from "react-icons/md";
-import { MdArrowBack } from "react-icons/md";
+import { MdArrowBack, MdVisibility, MdVisibilityOff } from "react-icons/md";
 import Button from '@/components/inputs/Button';
 import Input from '@/components/inputs/Input';
 import { useRouter } from 'next/router';
@@ -17,7 +17,8 @@ export default function shopowner() {
   const [password1, setpassword1] = useState("")
   const [password2, setpassword2] = useState("")
   const [apiResponse, setapiResponse] = useState({})
-  
+   const [showpassword1, setshowpassword1] = useState(false);
+  const [showpassword2, setshowpassword2] = useState(false);
   
 
   const signUp = ({ name, email, password }) => {
@@ -95,10 +96,28 @@ export default function shopowner() {
         <p className='text-white text-base font-[Poppins] px-8'> Discover new experience with us</p>
         <div className='w-full'>
           <form onSubmit={submitHandler} className='flex flex-col gap-3 w-full items-center justify-center px-3 mt-4'>
-            <Input placeholder='Username' type='text' required={true} value={name} onChange={e => setname(e.target.value)} />
-            <Input placeholder='Email' type='text' required={true} value={email} onChange={e => setemail(e.target.value)} />
-            <Input placeholder='Password' type='text' required={true} value={password1} onChange={e => setpassword1(e.target.value)} />
-            <Input placeholder='Confirm Password' required={true} type='text' value={password2} onChange={e => setpassword2(e.target.value)} />
+            <div className='relative'>
+              <Input placeholder='Username' type='text' required={true} value={name} onChange={e => setname(e.target.value)} />
+            </div>
+            <div className='relative'>
+              <Input placeholder='Email' type='text' required={true} value={email} onChange={e => setemail(e.target.value)} />
+            </div>
+            <div className='relative'>
+            <Input placeholder='Password' type={showpassword1 ? "text" : "password"} required={true} value={password1} onChange={e => setpassword1(e.target.value)} />
+            {showpassword1 ? (
+              <MdVisibilityOff onClick={() => setshowpassword1(false)} className='text-black text-xl cursor-pointer absolute right-2 top-2' />
+            ) : (
+              <MdVisibility onClick={() => setshowpassword1(true)} className='text-black text-xl cursor-pointer absolute right-2 top-2' />
+            )}
+          </div>
+          <div className='relative'>
+            <Input placeholder='Confirm Password' required={true} type={showpassword2 ? "text" : "password"} value={password2} onChange={e => setpassword2(e.target.value)} />
+            {showpassword2 ? (
+              <MdVisibilityOff onClick={() => setshowpassword2(false)} className='text-black text-xl cursor-pointer absolute right-2 top-2' />
+            ) : (
+              <MdVisibility onClick={() => setshowpassword2(true)} className='text-black text-xl cursor-pointer absolute right-2 top-2' />
+            )}
+          </div>         
             <Link className="text-right" href="/login" ><p className='text-white justify-right text-sm text-right w-full mt-3'>Already have an account?</p></Link>
             <button className='bg-[#ff9900] flex justify-center w-1/6  items-center text-black text-base rounded-lg px-1 py-2 mt-4'  >Continue <MdOutlineArrowForward ></MdOutlineArrowForward></button>
           </form>

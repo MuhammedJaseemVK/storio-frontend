@@ -10,7 +10,7 @@ import { auth, createUserWithEmailAndPassword } from '../config/firebase-config'
 import Subtext from '@/components/inputs/Subtext';
 import axios from 'axios';
 import Notification from '@/components/Notification';
-import Switch from 'react-switch';
+
 
 export default function signup() {
   const router = useRouter();
@@ -18,7 +18,8 @@ export default function signup() {
   const [email, setemail] = useState("")
   const [password1, setpassword1] = useState("")
   const [password2, setpassword2] = useState("")
-  const [showpassword, setshowpassword] = useState(false)
+  const [showpassword1, setshowpassword1] = useState(false);
+  const [showpassword2, setshowpassword2] = useState(false);
   const [apiResponse, setapiResponse] = useState({})
 
   const signUp = ({ name, email, password }) => {
@@ -118,12 +119,20 @@ export default function signup() {
             <Input placeholder='Email' type='text' required={true} value={email} onChange={e => setemail(e.target.value)} />
           </div>
           <div className='relative'>
-            <Input placeholder='Password' type={showpassword ? "text" : "password"} required={true} value={password1} onChange={e => setpassword1(e.target.value)} />
-            <MdVisibility onClick={() => setshowpassword(!showpassword)} className='text-black text-xl cursor-pointer absolute right-2 top-2' />
+            <Input placeholder='Password' type={showpassword1 ? "text" : "password"} required={true} value={password1} onChange={e => setpassword1(e.target.value)} />
+            {showpassword1 ? (
+              <MdVisibilityOff onClick={() => setshowpassword1(false)} className='text-black text-xl cursor-pointer absolute right-2 top-2' />
+            ) : (
+              <MdVisibility onClick={() => setshowpassword1(true)} className='text-black text-xl cursor-pointer absolute right-2 top-2' />
+            )}
           </div>
           <div className='relative'>
-            <Input placeholder='Confirm Password' required={true} type={showpassword ? "text" : "password"} value={password2} onChange={e => setpassword2(e.target.value)} />
-            <MdVisibility onClick={() => setshowpassword(!showpassword)} className='text-black text-xl cursor-pointer absolute right-2 top-2' />
+            <Input placeholder='Confirm Password' required={true} type={showpassword2 ? "text" : "password"} value={password2} onChange={e => setpassword2(e.target.value)} />
+            {showpassword2 ? (
+              <MdVisibilityOff onClick={() => setshowpassword2(false)} className='text-black text-xl cursor-pointer absolute right-2 top-2' />
+            ) : (
+              <MdVisibility onClick={() => setshowpassword2(true)} className='text-black text-xl cursor-pointer absolute right-2 top-2' />
+            )}
           </div>
           <Link className="text-right" href="/login" ><p className='text-white justify-right text-sm text-right w-full mt-3'>Already have an account?</p></Link>
           <Button text="Continue" id="signupButton" />

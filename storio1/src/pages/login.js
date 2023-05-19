@@ -1,7 +1,7 @@
 import React,  { useState } from 'react'
 import { useRouter } from 'next/router'
 // import MdKeyboardBackspace from "react-icons/md";
-import { MdArrowBack } from "react-icons/md";
+import { MdArrowBack, MdVisibility, MdVisibilityOff } from "react-icons/md";
 import Input from '@/components/inputs/Input';
 import Button from '@/components/inputs/Button';
 import Link from 'next/link'
@@ -84,14 +84,23 @@ export default function detailEntry() {
       <Link href="/"> <MdArrowBack className='text-white text-3xl' /></Link>
       <div className='text-white text-3xl font-semibold px-3 mt-4'>Welcome <span className='text-[#ff9900]'>    Back</span></div>
       <p className='text-white text-sm text-left px-3 mt-3'>You have been missed</p>
-      <form onSubmit={submitHandler} className='flex flex-col gap-3 w-full items-center px-3 mt-0.001'>
+      <form onSubmit={submitHandler} className='flex flex-col gap-3 w-full items-center px-3 mt-5'>
         <Input placeholder="Username" type="text" required={true} value={email} onChange={e => setEmail(e.target.value)} />
+        <div className='relative'>
         <Input placeholder="Password" type={showpassword ? "text" : "password"} required={true} value={password} onChange={e => setPassword(e.target.value)} />
-        <div className='flex items-center justify-end w-72'>
+        {
+          showpassword? (
+            <MdVisibilityOff onClick={() => setshowpassword(false)} className='text-black text-xl cursor-pointer absolute right-2 top-2' />
+          ) : (
+            <MdVisibility onClick={() => setshowpassword(true)} className='text-black text-xl cursor-pointer absolute right-2 top-2' />
+          )
+        }
+        </div>
+        {/* <div className='flex items-center justify-end w-72'>
           <input type="checkbox" name="show" value={showpassword} onChange={() => setshowpassword(!showpassword)} />
           <label className='text-white text-sm  px-3 ' >Show password</label>
 
-        </div>
+        </div> */}
         <Button className='mt-10' text='Continue' />
 
       </form>
