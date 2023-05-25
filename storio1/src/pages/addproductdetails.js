@@ -17,6 +17,7 @@ export default function detailEntry() {
     const [description, setdescription] = useState("")
     const [price, setprice] = useState("")
     const [rfid, setrfid] = useState("")
+    const[productindex,setproductindex]=useState("")
     const [brand, setbrand] = useState("")
     const [category, setCategory] = useState("")
     const [quantity, setquantity] = useState("")
@@ -28,12 +29,13 @@ export default function detailEntry() {
         formData.append('price', price);
         formData.append('rfid', rfid);
         formData.append('brand', brand);
+        formData.append('productindex', productindex);
         formData.append('description', description)
         formData.append('category', category);
         formData.append('quantity', quantity);
 
         return axios.post('https://storio.virtualdom.tech/products', {
-            name, price, rfid, brand, category, quantity, description
+            name, price,productindex,  rfid, brand, category, quantity, description
         }, {
             //   headers: { 'Content-Type': 'multipart/form-data' }
         });
@@ -80,7 +82,7 @@ export default function detailEntry() {
                             </select>
                             <Input placeholder="Product Brand" type="text" required={true} value={brand} onChange={e => setbrand(e.target.value)} />
                             <Input placeholder="Product RFID" type="text" required={true} value={rfid} onChange={e => setrfid(e.target.value)} />
-
+                            <Input placeholder="Product Index" type="number" required={true} value={productindex} onChange={e => setproductindex(e.target.value)} />
                             <Input placeholder="Quantity" type="number" required={true} value={quantity} onChange={e => setquantity(e.target.value)} />
 
                             <Button text='Add' />
