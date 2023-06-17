@@ -14,7 +14,7 @@ const ProductRecommendation = () => {
         let username = localStorage.getItem('username')
         let orders = await fetchProfile(username)
         console.log(orders)
-        setUserPurchases([orders.data[0].items[0].index || 310])
+        setUserPurchases([orders.data[orders.data.length-1].items[0].index || 310])
         setorders(orders.data)
       }
       fetchorders()
