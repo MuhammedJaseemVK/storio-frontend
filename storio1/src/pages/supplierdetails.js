@@ -82,7 +82,7 @@ export default function detailEntry() {
         })
         setTimeout(() => {
           setapiResponse({})
-          router.push('/supplierhome')
+          router.push('/supplierHome')
         }, 3000)
       } catch (error) {
         console.log(error)

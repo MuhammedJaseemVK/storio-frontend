@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import React from 'react';
+import axios from 'axios';
 
 const ProductRecommendation = () => {
   const [model, setModel] = useState(null);
-  const [userPurchases, setUserPurchases] = useState([200, 957, 400, 2]);
+  const [userPurchases, setUserPurchases] = useState([]);
   const [recommendations, setRecommendations] = useState([]);
   const [showNotification, setShowNotification] = useState(false);
   const [orders, setorders] = useState([])
@@ -13,6 +14,7 @@ const ProductRecommendation = () => {
         let username = localStorage.getItem('username')
         let orders = await fetchProfile(username)
         console.log(orders)
+        setUserPurchases([orders.data[0].items[0].index || 310])
         setorders(orders.data)
       }
       fetchorders()
@@ -51,7 +53,7 @@ const ProductRecommendation = () => {
       const product_idx = products.findIndex((product) => product.index === purchase);
 
       const sim_scores = enumerate(cosine_sim[product_idx]).sort((a, b) => b[1] - a[1]);
-      const top_indices = sim_scores.slice(1, 2).map(([idx, _]) => idx);
+      const top_indices = sim_scores.slice(7,10).map(([idx, _]) => idx);
 
       const recommendations = top_indices.map((idx) => products[idx]);
       topRecommendations = [...topRecommendations, ...recommendations];

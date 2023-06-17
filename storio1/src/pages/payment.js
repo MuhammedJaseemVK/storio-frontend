@@ -84,6 +84,7 @@ function Payment() {
                         productId: p._id,
                         quantity: 1,
                         price: p.price,
+                        index: p.productindex
                     })),
                     razorpayPaymentId: response.razorpay_payment_id,
                     razorpayOrderId: response.razorpay_order_id,
